@@ -1,0 +1,522 @@
+[
+  {
+    "id": "project-doctor",
+    "title": "Project Doctor",
+    "tagline": "Find unused and broken assets in Unity and clean them up safely.",
+    "description": "An editor-only Unity package that builds a dependency graph of everything under Assets/, works out what your build can actually reach and finds missing scripts and broken references down to the field. Cleanup goes through a quarantine that keeps GUIDs, so every move can be undone.",
+    "highlights": [
+      "Reachability from the real build roots: Build Settings scenes, Resources, Addressables, AssetBundles and packages",
+      "Missing scripts and broken references located down to the GameObject, component and field",
+      "Quarantine instead of delete: files keep their .meta, so GUIDs and references reconnect on restore",
+      "About 6 seconds for 11,000 assets without freezing the Editor; rescans reuse what didn't change"
+    ],
+    "status": "Coming soon to the Unity Asset Store",
+    "tech": ["C#", "Unity Editor", "UI Toolkit"],
+    "categories": ["Unity"],
+    "icon": "pulse",
+    "color": "#00e5ff",
+    "year": 2026,
+    "links": {
+      "store": "",
+      "docs": "/project-doctor/"
+    },
+    "featured": true
+  },
+  {
+    "id": "nomiro-merge-kitchen",
+    "title": "Nomiro Merge Kitchen",
+    "tagline": "Drop ingredients, merge matching ones and cook your way from an olive to a cake.",
+    "description": "A cozy pixel-art merge puzzle for Android in the Suika style. Two identical ingredients that touch merge into the next dish along a 17-step chain, from olive and apple up to kebab, pizza, döner and cake. The board must never overflow the danger line.",
+    "highlights": [
+      "17 dishes in the recipe chain; the spawn pool shifts up as you climb and clears old pieces for points",
+      "Random kitchen events every 40–65 s: Fast Fall, Auto Drop, Bonus Merge, Double Points and Kitchen Quake",
+      "Combo multiplier with rising pitch, a NEXT preview and a drop guide that box-casts to where the piece will land",
+      "22 achievements, saved progress and a cook book showing every recipe"
+    ],
+    "status": "Live on Google Play",
+    "image": "images/projects/nomiro.webp",
+    "tech": ["C#", "Unity 6", "2D Physics", "Android"],
+    "categories": ["Unity", "Game", "Mobile"],
+    "icon": "chef",
+    "color": "#f59e0b",
+    "year": 2026,
+    "links": {
+      "googleplay": "https://play.google.com/store/apps/details?id=com.burakgames.nomiromergekitchen"
+    },
+    "featured": true
+  },
+  {
+    "id": "megabit-tycoon",
+    "title": "SpeedDownload: Idle Megabit Tycoon",
+    "tagline": "Idle tycoon: climb from 56k dial-up to quantum terabits.",
+    "description": "A retro-modern 2D idle game built around a tachometer: tap to push the download speed, finish files, buy faster connection tiers and automate the network through every internet era, from dial-up to DSL, cable, fiber and quantum terabits.",
+    "highlights": [
+      "Prestige with fiber credits and permanent infrastructure multiplier cards",
+      "PBKDF2 / AES-GCM encrypted saves with automatic tamper detection",
+      "Procedurally synthesized audio, offline progress and seeded daily quests",
+      "31 NUnit tests and a soak tester that runs 3,600+ frames with zero allocations in the steady state"
+    ],
+    "status": "Playable in the browser",
+    "tech": ["C#", "Unity 6", "URP 2D", "WebGL", "Android"],
+    "categories": ["Unity", "Game"],
+    "icon": "gauge",
+    "color": "#ffb020",
+    "year": 2026,
+    "links": {
+      "play": "https://burakyildizgamedev.github.io/SpeedDownload-Idle-Megabit-Tycoon/",
+      "itch": "https://burak-yildiz.itch.io/megabit-tycoon",
+      "github": "https://github.com/BurakYildizGameDev/SpeedDownload-Idle-Megabit-Tycoon"
+    },
+    "featured": true
+  },
+  {
+    "id": "vr-safety",
+    "title": "VR Occupational Safety Simulator",
+    "tagline": "Four-module VR training for high-risk workplace scenarios.",
+    "description": "A virtual reality system that puts trainees into hazardous situations under realistic pressure, so safety training turns into behaviour. It covers psychological resilience as well as physical safety. Funded by TÜBİTAK 2209-A, presented at ALEMSAS 2025 in Baku and built as my Computer Engineering capstone.",
+    "highlights": [
+      "Modules: VR orientation, fire evacuation with checkpoints, mine collapse survival and mental wellness",
+      "Routes reconfigure after an explosion; in the mine the trainee is both survivor and rescuer",
+      "Stable 72 FPS and under 10 ms latency on Meta Quest 3",
+      "LOD, occlusion culling, baked lighting and raycast-based interaction to stay within the mobile VR budget"
+    ],
+    "status": "TÜBİTAK 2209-A · ALEMSAS 2025",
+    "tech": ["C#", "Unity 2022 LTS", "XR Interaction Toolkit", "Meta Quest 3"],
+    "categories": ["Unity"],
+    "icon": "vr",
+    "color": "#a78bfa",
+    "year": 2025,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/YuksekRiskliIsGuvenligiIcinSanalGerceklikSimulasyonSistemTasarimi"
+    },
+    "featured": true
+  },
+  {
+    "id": "neon-shorts-engine",
+    "title": "Neon Shorts Engine",
+    "tagline": "Procedural 9:16 video factory that renders straight to MP4 in the browser.",
+    "description": "25 physics-driven modes generate hypnotic vertical videos for Shorts, TikTok and Reels. Frames render on an OffscreenCanvas at 1080×1920 and 60 FPS, the sound is synthesized with plain DSP math, and WebCodecs encodes H.264 + AAC straight to an .mp4, with no video editor involved.",
+    "highlights": [
+      "25 modes such as Territory War, Plinko Cascade, Black Hole and Domino Cascade",
+      "Two-pass deterministic render: a seeded PRNG keeps audio and frames in sync to the millisecond",
+      "480 Hz sub-stepped physics, so fast particles never tunnel through walls",
+      "Rendering runs in a Web Worker pool while the studio UI stays at 60 FPS; 5 languages"
+    ],
+    "tech": ["JavaScript", "Vite", "WebCodecs", "OffscreenCanvas", "Web Workers", "Web Audio"],
+    "categories": ["Web"],
+    "icon": "bolt",
+    "color": "#ff3d81",
+    "year": 2026,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/neon-shorts-engine"
+    },
+    "featured": true
+  },
+  {
+    "id": "tokencost-web",
+    "title": "TokenCost FinOps Analyzer",
+    "tagline": "See what your LLM usage really costs and how much prompt caching saves.",
+    "description": "Paste a console usage table, drop a screenshot or load a CSV and get the real invoice, the cost you would have paid without caching and per-model quota pressure in seconds. It runs entirely in the browser, so your data never leaves your device.",
+    "highlights": [
+      "Three ways in: paste a table, drop screenshots (OCR with Tesseract.js) or load CSV / TSV / JSON / Markdown",
+      "Live prices from LiteLLM and OpenRouter, cached for 24 hours, with an offline catalog as a fallback",
+      "CSV, PDF and Markdown reports plus shareable links, with no server involved",
+      "Zero runtime dependencies: plain SVG charts, 5 languages and 3 currencies"
+    ],
+    "status": "Live",
+    "image": "images/projects/tokencost.webp",
+    "tech": ["JavaScript", "Tesseract.js", "SVG", "GitHub Pages"],
+    "categories": ["Web", "AI"],
+    "icon": "coin",
+    "color": "#34d399",
+    "year": 2026,
+    "links": {
+      "live": "https://burakyildizgamedev.github.io/tokencost-web/",
+      "github": "https://github.com/BurakYildizGameDev/tokencost-web"
+    },
+    "featured": true
+  },
+  {
+    "id": "dictalearn",
+    "title": "DictaLearn",
+    "tagline": "Offline English dictation and shadowing practice for web and Android.",
+    "description": "Listen to a sentence, type what you hear, see a word-level diff, then translate and shadow it out loud. A React + TypeScript PWA and a native Kotlin / Jetpack Compose app share one lesson format and work fully offline, with no account, server or telemetry.",
+    "highlights": [
+      "36 graded classics at A2 and B1: 13,000 narrated sentences, about 23 hours of audio",
+      "Word-level Levenshtein diff that marks mistakes by shape as well as colour, for colour-blind users",
+      "Offline dictionary with 14,067 entries and spaced repetition for the words you missed",
+      "Turns your own PDFs, including scanned ones, into dictation lessons"
+    ],
+    "status": "Live · Android APK",
+    "image": "images/projects/dictalearn.webp",
+    "tech": ["React", "TypeScript", "PWA", "Kotlin", "Jetpack Compose"],
+    "categories": ["Web", "Mobile"],
+    "icon": "headphones",
+    "color": "#38bdf8",
+    "year": 2026,
+    "links": {
+      "live": "https://burakyildizgamedev.github.io/dictalearn/",
+      "download": "https://github.com/BurakYildizGameDev/dictalearn/releases/latest",
+      "github": "https://github.com/BurakYildizGameDev/dictalearn"
+    },
+    "featured": true
+  },
+  {
+    "id": "scroll-meter",
+    "title": "Scroll-Meter",
+    "tagline": "How far does your thumb travel? Scrolling measured in meters and kilometers.",
+    "description": "An Android digital well-being tracker that turns vertical scrolling across all your apps into physical distance, so doomscrolling becomes something you can see. It never encourages more scrolling; it makes the habit concrete.",
+    "highlights": [
+      "Hybrid dual-engine architecture combining usage access and accessibility events",
+      "Micro-scroll engine tuned for 120 / 144 Hz LTPO displays, with an on-screen ruler for calibration",
+      "Fully offline with no internet permission; buffered writes to save battery",
+      "Clean Architecture + MVI, 9 languages and 109 passing tests"
+    ],
+    "status": "Android APK",
+    "tech": ["Kotlin", "Jetpack Compose", "Android", "MVI"],
+    "categories": ["Mobile"],
+    "icon": "phone",
+    "color": "#10b981",
+    "year": 2026,
+    "links": {
+      "download": "https://github.com/BurakYildizGameDev/Scroll-Meter/releases/latest",
+      "github": "https://github.com/BurakYildizGameDev/Scroll-Meter"
+    },
+    "featured": true
+  },
+  {
+    "id": "turkish-emotion",
+    "title": "Turkish Text Emotion Classifier",
+    "tagline": "8-class emotion detection for Turkish text, fine-tuned from BERTurk.",
+    "description": "The whole pipeline: building the dataset, fine-tuning BERTurk, ablation studies and a statistical evaluation, plus a Streamlit demo. Classes: happiness, sadness, anger, fear, surprise, disgust, love and neutral. The trained model is published on Hugging Face.",
+    "highlights": [
+      "Test macro-F1 0.812 on 8,875 human-labelled samples, averaged over 3 seeds",
+      "Beats XLM-RoBERTa, mBERT and TF-IDF; every gap significant (paired bootstrap + Holm, p < 0.001)",
+      "Per-source results reported honestly: about 0.62 on translated GoEmotions, about 0.81 on TREMO majority",
+      "Ablations show silver data hurts and weak labels change nothing"
+    ],
+    "status": "Model on Hugging Face",
+    "tech": ["Python", "PyTorch", "Transformers", "Streamlit"],
+    "categories": ["AI"],
+    "icon": "smile",
+    "color": "#f472b6",
+    "year": 2025,
+    "links": {
+      "model": "https://huggingface.co/BurakshDev/berturk-turkish-emotion-8class",
+      "github": "https://github.com/BurakYildizGameDev/Turkish-Text-Emotion-Measurement-Artificial-Intelligence"
+    },
+    "featured": true
+  },
+  {
+    "id": "survivor-detection",
+    "title": "Acoustic Survivor Detection Under Rubble",
+    "tagline": "Listening for stressed and panicked voices after an earthquake.",
+    "description": "A real-time, two-stage audio pipeline: first decide whether a sound contains a human voice, then classify it as normal, stressed or panicked. Consecutive emergency windows are grouped into episodes, and a long enough episode raises one operator alarm on a live dashboard. I started it after living through the February 2023 earthquakes in Türkiye.",
+    "highlights": [
+      "Two-stage model: voice activity first, then the emotional state of the voice",
+      "Episode grouping, so operators get one alarm instead of a flood of alerts",
+      "Live Streamlit dashboard and an ESP32-S3 prototype running at the edge",
+      "Documented limits: an operator aid and research prototype, not a rescue decision tool"
+    ],
+    "tech": ["Python", "scikit-learn", "librosa", "Streamlit", "ESP32-S3"],
+    "categories": ["AI"],
+    "icon": "wave",
+    "color": "#fb7185",
+    "year": 2025,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Stress_Detection_from_Sound_Signals_and_Application_to_Detecting_Survivors_Under_Rubble"
+    },
+    "featured": true
+  },
+  {
+    "id": "ai-data-studio",
+    "title": "AI Synthetic Data Studio",
+    "tagline": "A local LLM writes the schema; the engine generates and validates the rows.",
+    "description": "Describe a dataset in plain language. A small local model writes a Schema Contract (columns, distributions, business rules, correlations), the engine generates millions of rows in seconds and a validator measures whether the data keeps the contract. No API key needed, nothing leaves your machine.",
+    "highlights": [
+      "One LLM call covers ten rows or ten million: the model writes the contract, not the data",
+      "Parametric engine with a Gaussian copula for correlations and monotonic trends",
+      "A million rows across ten columns in about 2 seconds and 270 MB",
+      "Exports CSV, Parquet or JSON with a validation report and a script that regenerates the data offline"
+    ],
+    "image": "images/projects/ai-data-studio.webp",
+    "tech": ["Python", "Ollama", "NumPy", "pandas", "Desktop UI"],
+    "categories": ["AI"],
+    "icon": "database",
+    "color": "#facc15",
+    "year": 2026,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/ai-data-studio"
+    },
+    "featured": true
+  },
+  {
+    "id": "turkish-sts-ensemble",
+    "title": "Turkish Paraphrase Detection",
+    "tagline": "MiniLM, a Siamese Bi-LSTM and lexical features stacked into gradient boosting.",
+    "description": "Decides whether two Turkish sentences mean the same thing. Multilingual MiniLM embeddings, a Siamese Bi-LSTM with attention and four lexical similarity features are stacked into Random Forest, XGBoost and LightGBM models.",
+    "highlights": [
+      "F1 0.880 with LightGBM vs 0.832 for zero-shot MiniLM, on an anchor-grouped split",
+      "620,089 pairs from three public datasets, deduplicated to 326,279 unique pairs",
+      "Live demo on Hugging Face that runs entirely in the browser"
+    ],
+    "status": "Live demo",
+    "image": "images/projects/turkish-sts.webp",
+    "tech": ["Python", "PyTorch", "Sentence Transformers", "XGBoost", "LightGBM"],
+    "categories": ["AI"],
+    "icon": "equals",
+    "color": "#c084fc",
+    "year": 2025,
+    "links": {
+      "live": "https://huggingface.co/spaces/BurakshDev/turkish-paraphrase-detection",
+      "github": "https://github.com/BurakYildizGameDev/turkish-sts-ensemble"
+    },
+    "featured": true
+  },
+  {
+    "id": "e-commerce",
+    "title": "Multi-vendor E-commerce Platform",
+    "tagline": "React storefront, Node.js middle tier, Laravel API and MySQL.",
+    "description": "A multi-vendor shop split into three services: a React + TypeScript storefront, a Node.js proxy that handles rate limiting, webhooks and real-time notifications over Socket.io, and a Laravel API on MySQL behind it.",
+    "highlights": [
+      "Four-tier architecture: React → Node.js proxy → Laravel API → MySQL",
+      "Signed webhooks between Laravel and Node.js",
+      "Real-time notifications over Socket.io"
+    ],
+    "tech": ["React", "TypeScript", "Node.js", "Laravel", "MySQL", "Socket.io"],
+    "categories": ["Web"],
+    "icon": "cart",
+    "color": "#60a5fa",
+    "year": 2025,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/E_Ticaret_Web_Site"
+    },
+    "featured": false
+  },
+  {
+    "id": "quiz-api",
+    "title": "Timed Quiz Web API",
+    "tagline": "Question-and-answer API with time limits and live scores.",
+    "description": "A layered ASP.NET Core Web API: users get random questions, answer within a time limit and see their score update instantly. Players are matched by IP address and the timer starts when a question is served.",
+    "highlights": [
+      "Random questions, answer checking and a per-player score",
+      "Server-side time limit for every question",
+      "Swagger UI for trying the endpoints"
+    ],
+    "tech": ["C#", ".NET 7", "ASP.NET Core", "Swagger"],
+    "categories": ["Web"],
+    "icon": "server",
+    "color": "#818cf8",
+    "year": 2025,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Week1Onlyjs_YazilimXYZProjectBackend.net"
+    },
+    "featured": false
+  },
+  {
+    "id": "northwind-ntier",
+    "title": "Northwind N-Tier Architecture",
+    "tagline": "Layered .NET backend on the Northwind database with Entity Framework.",
+    "description": "A layered C# project built around the classic Northwind database: Entities, DataAccess, Business and Core layers with a generic Entity Framework repository, plus an in-memory data source for testing.",
+    "highlights": [
+      "Generic EfEntityRepositoryBase shared by every data access class",
+      "Swappable data sources: Entity Framework or in-memory",
+      "Business rules kept out of the data and UI layers"
+    ],
+    "tech": ["C#", ".NET", "Entity Framework", "SQL Server"],
+    "categories": ["Web"],
+    "icon": "layers",
+    "color": "#94a3b8",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/FinalProject"
+    },
+    "featured": false
+  },
+  {
+    "id": "otsimo-free-draw",
+    "title": "Otsimo Game Dev Internship Task",
+    "tagline": "A free-drawing game made for the Otsimo 2024 game developer internship.",
+    "description": "A Unity drawing app written as the take-home task for the Otsimo 2024 game developer internship: draw freely on a canvas with adjustable brush settings and menus.",
+    "highlights": [
+      "Pixel drawing on a texture with brush size and colour settings",
+      "Menu and button flow for the drawing screen"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "brush",
+    "color": "#fb923c",
+    "year": 2024,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Otsimo-2024-Game-Dev-Inteship-Task"
+    },
+    "featured": false
+  },
+  {
+    "id": "idle-developers",
+    "title": "Idle Developers",
+    "tagline": "Hire developers, finish tasks and grow the studio.",
+    "description": "A Unity idle game: complete tasks, unlock developers who work for you, earn money and improve yourself, with a small clicker game mixed in.",
+    "highlights": [
+      "Task system with developers that keep working while you're away",
+      "Money system and upgrades for steady progression",
+      "Mini clicker game elements"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "gamepad",
+    "color": "#22d3ee",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Idle-Developers"
+    },
+    "featured": false
+  },
+  {
+    "id": "fast-fingers",
+    "title": "Fast Fingers on Keyboard",
+    "tagline": "A ten-finger typing test for Windows.",
+    "description": "A ten-finger typing test built in Unity for Windows.",
+    "highlights": [
+      "Built as a Windows desktop app in Unity"
+    ],
+    "tech": ["C#", "Unity", "Windows"],
+    "categories": ["Unity", "Game"],
+    "icon": "keyboard",
+    "color": "#e879f9",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/fast-fingers-on-keyboard"
+    },
+    "featured": false
+  },
+  {
+    "id": "more-basic-hyper-casual",
+    "title": "Mini Hyper-Casual Game",
+    "tagline": "The hyper-casual formula, shrunk down to a quick game for the PC.",
+    "description": "A small PC game that takes the idea behind today's hyper-casual mobile games and turns it into a mini game for the computer.",
+    "highlights": [
+      "Player movement and a game manager in a compact Unity project"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "tap",
+    "color": "#4ade80",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/more-basic-hyper-casual"
+    },
+    "featured": false
+  },
+  {
+    "id": "idle-castle",
+    "title": "Idle Castle",
+    "tagline": "Water the castle fields, sell the bales, milk the sheep.",
+    "description": "A small idle economy game in Unity: gather water, irrigate the fields inside the castle, sell hay bales and milk, then reinvest in the castle.",
+    "highlights": [
+      "Production chain: water → fields → hay bales, sheep → milk",
+      "Selling and reinvesting loop"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "castle",
+    "color": "#a3e635",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Idle-Castel"
+    },
+    "featured": false
+  },
+  {
+    "id": "merge-byte",
+    "title": "Merge Byte",
+    "tagline": "Merge bytes, fill the SSD, sell it and buy a bigger one.",
+    "description": "A merge game built on top of cemuka's basic-merge-system: combine bytes into bigger units, store them on an SSD, sell it and upgrade.",
+    "highlights": [
+      "Merge loop extended with storage and selling",
+      "Upgrades to bigger SSDs as the economy grows"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "merge",
+    "color": "#2dd4bf",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Merge-Byte"
+    },
+    "featured": false
+  },
+  {
+    "id": "break-barriers",
+    "title": "Break Barriers",
+    "tagline": "Upgrade armor, hardness and durability, then smash the walls.",
+    "description": "An idle game about breaking walls: collect upgrades to armor, hardness and durability, then replay levels to break through further each time.",
+    "highlights": [
+      "Three upgrade stats that change how far you get",
+      "Replayable levels for steady progression"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "gamepad",
+    "color": "#f97316",
+    "year": 2023,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Break-Bariers-idle-game"
+    },
+    "featured": false
+  },
+  {
+    "id": "battery-carrier",
+    "title": "Battery Carrier",
+    "tagline": "Carry energy to the village.",
+    "description": "A small Unity game about carrying batteries to bring power to a village.",
+    "highlights": [
+      "Carry batteries to the village to power it up"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "battery",
+    "color": "#84cc16",
+    "year": 2022,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/battery-carrier"
+    },
+    "featured": false
+  },
+  {
+    "id": "find-the-money",
+    "title": "Find the Money",
+    "tagline": "Search the level and collect the gold.",
+    "description": "A small PC game in Unity: explore the level and collect the gold pieces.",
+    "highlights": [
+      "Gold pickups that disappear as you collect them"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "search",
+    "color": "#fde047",
+    "year": 2022,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/Find-the-Money-for-pc-"
+    },
+    "featured": false
+  },
+  {
+    "id": "produce-and-sell",
+    "title": "Produce and Sell",
+    "tagline": "Click to produce, sell what you make, build up.",
+    "description": "One of my first Unity games: a clicker where you produce goods with the mouse and keyboard and sell them.",
+    "highlights": [
+      "Mouse and keyboard driven production and a selling screen"
+    ],
+    "tech": ["C#", "Unity"],
+    "categories": ["Unity", "Game"],
+    "icon": "factory",
+    "color": "#67e8f9",
+    "year": 2022,
+    "links": {
+      "github": "https://github.com/BurakYildizGameDev/produce-and-sell-click-game"
+    },
+    "featured": false
+  }
+]

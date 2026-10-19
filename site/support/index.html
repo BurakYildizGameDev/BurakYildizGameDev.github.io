@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!--@meta title="Support" description="Customer support for Project Doctor and other Unity Asset Store packages by Burak Yıldız: support e-mail, bug report checklist, FAQ and version info." path="/support/"-->
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="support">
+    <!--@header:support-->
+
+    <main id="main" class="container page">
+      <h1 class="page-title">Support</h1>
+      <p class="lead">Help for Project Doctor and my other Unity Asset Store packages.</p>
+
+      <section class="contact-card" aria-labelledby="support-mail">
+        <div>
+          <h2 id="support-mail" class="contact-card-title">E-mail support</h2>
+          <p><a class="big-link" href="mailto:{{supportEmail}}?subject=Support%20request">{{supportEmail}}</a></p>
+          <p class="muted">I usually reply within two business days.</p>
+        </div>
+        <div class="contact-card-actions">
+          <a class="btn btn-primary" href="mailto:{{supportEmail}}?subject=Support%20request">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Write an e-mail
+          </a>
+          <button type="button" class="btn btn-ghost js-only" data-copy="{{supportEmail}}">Copy address</button>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="report">
+        <h2 id="report" class="section-title">Reporting a bug</h2>
+        <p>These help me reproduce the problem on the first try:</p>
+        <ul class="check-list">
+          <li>The package and its version (shown in <strong>Window → Package Manager</strong>).</li>
+          <li>Your Unity version and render pipeline.</li>
+          <li>What you did, what you expected and what happened instead.</li>
+          <li>The Console output, and if possible <code>Editor.log</code> (<strong>Console → ⋮ → Open Editor Log</strong>).</li>
+          <li>Screenshots, or a small project that shows the problem.</li>
+        </ul>
+        <p>Please include your <strong>invoice number</strong> from the Asset Store order for Pro features.</p>
+      </section>
+
+      <section class="section" aria-labelledby="faq">
+        <h2 id="faq" class="section-title">FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary>Does Project Doctor delete my files?</summary>
+            <p>No. Cleanup moves files to <code>ProjectDoctorQuarantine/</code> next to your <code>Assets/</code> folder, together with their <code>.meta</code> files, so GUIDs survive. <strong>Quarantine → Restore Session</strong> brings them back. <strong>Delete Permanently…</strong> is the only irreversible action, and it asks first.</p>
+          </details>
+          <details>
+            <summary>Which Unity versions are supported?</summary>
+            <p>Unity {{pdUnity}}. It is tested on 2022.3.62f3 and 6000.5.0f1.</p>
+          </details>
+          <details>
+            <summary>Does it work with URP or HDRP?</summary>
+            <p>Yes. Project Doctor never touches rendering, so any render pipeline works. The Pro audit flags materials that would render pink in your project's pipeline.</p>
+          </details>
+          <details>
+            <summary>Does anything end up in my player build?</summary>
+            <p>No. It is an editor-only assembly with no runtime footprint.</p>
+          </details>
+          <details>
+            <summary>Why is an asset marked "Medium" instead of "High"?</summary>
+            <p>Medium means the asset may still be used without a serialized reference, for example loaded by name from code, so it is listed under <em>To review</em> and never bulk-selected. High findings are safe to bulk-move.</p>
+          </details>
+          <details>
+            <summary>I have the free version installed. Can I add Pro?</summary>
+            <p>Yes. Pro detects the free package and asks you to remove it, because both carry the same classes.</p>
+          </details>
+          <details>
+            <summary>How do refunds work?</summary>
+            <p>Purchases and refunds go through the Unity Asset Store and follow its terms. If something doesn't work for you, please write first: most problems can be fixed quickly.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="versions">
+        <h2 id="versions" class="section-title">Version info</h2>
+        <div class="table-wrap">
+          <table class="compare">
+            <thead><tr><th scope="col">Package</th><th scope="col">Latest version</th><th scope="col">Unity</th></tr></thead>
+            <tbody>
+              <tr><td><a href="/project-doctor/">Project Doctor</a></td><td>{{pdVersion}}</td><td>{{pdUnity}}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!--@footer-->
+  </body>
+</html>

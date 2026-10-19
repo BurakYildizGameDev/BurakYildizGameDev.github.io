@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!--@meta title="Project Doctor for Unity" description="Project Doctor finds unused assets and broken references in your Unity project, explains its health score and cleans up through a quarantine you can always undo." path="/project-doctor/"-->
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="project-doctor">
+    <!--@header:project-doctor-->
+
+    <main id="main">
+      <section class="product-hero">
+        <div class="container product-hero-inner">
+          <div>
+            <p class="kicker">Unity editor extension</p>
+            <h1 class="page-title">Project Doctor</h1>
+            <p class="lead">Find unused assets and broken references in your Unity project, understand why they matter, and clean up safely with a quarantine you can always undo.</p>
+            <div class="cta-row">
+              <!--@if pdStoreUrl-->
+              <a class="btn btn-primary" href="{{pdStoreUrl}}" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+                Get it on the Asset Store
+              </a>
+              <!--@else-->
+              <span class="btn btn-primary is-static" aria-disabled="true">Coming soon to the Asset Store</span>
+              <!--@endif-->
+              <a class="btn btn-ghost" href="#quick-start">Quick start</a>
+              <a class="btn btn-ghost" href="/support/">Support</a>
+            </div>
+          </div>
+          <dl class="spec-list">
+            <div><dt>Version</dt><dd>{{pdVersion}}</dd></div>
+            <div><dt>Unity</dt><dd>{{pdUnity}}</dd></div>
+            <div><dt>Render pipelines</dt><dd>Any: Built-in, URP, HDRP</dd></div>
+            <div><dt>Runtime footprint</dt><dd>None, editor-only assembly</dd></div>
+            <div><dt>Package</dt><dd><code>com.burakdev.projectdoctor</code></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="why">
+        <h2 id="why" class="section-title">Three questions, answered</h2>
+        <p class="section-lead">Unity projects collect dead weight: textures from abandoned prototypes, materials nobody assigns, prefabs whose scripts were deleted. Deleting by hand is risky, because Unity can load assets in ways a quick search doesn't show.</p>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>What can my build really reach?</h3>
+            <p>A dependency graph from the real build roots: Build Settings scenes, <code>Resources</code>, Addressables, AssetBundles, Project Settings and packages. Everything else is a cleanup candidate, sorted by size.</p>
+          </article>
+          <article class="feature">
+            <h3>What is broken?</h3>
+            <p>Missing scripts, broken object references, orphaned prefab instances and event calls to renamed methods, located down to the GameObject, component and field.</p>
+          </article>
+          <article class="feature">
+            <h3>How do I clean up safely?</h3>
+            <p>Nothing is deleted. Files move to a quarantine with their <code>.meta</code>, so GUIDs survive and references reconnect after a restore.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="features">
+        <h2 id="features" class="section-title">Features</h2>
+        <ul class="check-list">
+          <li><strong>Two confidence levels.</strong> High findings are safe to bulk-move. Medium findings may still be used without a serialized reference, so they are never bulk-selected.</li>
+          <li><strong>Missing references</strong> in prefabs, scenes and native assets: materials, ScriptableObjects, animator controllers, timelines.</li>
+          <li><strong>One-click missing-script removal</strong> in prefabs (variants and nested prefabs included) and scenes, open or closed.</li>
+          <li><strong>References browser:</strong> what an asset uses and what uses it, right from the Project window context menu.</li>
+          <li><strong>Health score (0–100)</strong> that writes out its own calculation and the points each quick win can win back.</li>
+          <li><strong>Version control aware:</strong> with a provider such as Perforce active, files are checked out before they move.</li>
+          <li><strong>Fast:</strong> about 6 seconds for 11,000 assets and about a minute for 100,000, without freezing the Editor. Rescans reuse what didn't change.</li>
+        </ul>
+      </section>
+
+      <section class="container section" aria-labelledby="editions">
+        <h2 id="editions" class="section-title">Free and Pro</h2>
+        <div class="table-wrap">
+          <table class="compare">
+            <thead><tr><th scope="col">Free</th><th scope="col">Pro adds</th></tr></thead>
+            <tbody>
+              <tr><td>Unused assets with High / Medium confidence, assets named in code</td><td>Duplicates tab: identical files merged into one, references included</td></tr>
+              <tr><td>Missing scripts, references and prefabs; one-click script removal</td><td>Audit tab: import settings, large uncompressed textures, pink materials</td></tr>
+              <tr><td>Quarantine with preview, restore and retention</td><td>Cleanup tab: empty folders, broken Addressables entries</td></tr>
+              <tr><td>References browser, health score, quick wins</td><td>Command line scan and CI gate</td></tr>
+              <tr><td>Sortable lists, CSV export</td><td>Markdown, PDF and JSON export</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="screens">
+        <h2 id="screens" class="section-title">Screenshots</h2>
+        <!-- Add images to public/images/project-doctor/ and replace this placeholder with <figure> elements. -->
+        <div class="placeholder">
+          <p>Screenshots and a short video are on their way.</p>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="quick-start">
+        <h2 id="quick-start" class="section-title">Quick start</h2>
+        <ol class="steps">
+          <li>Import the package from <strong>Window → Package Manager → My Assets</strong>.</li>
+          <li>Open <strong>Tools → Project Doctor</strong> and press <strong>Scan Project</strong>. The Editor stays responsive; you can cancel at any time.</li>
+          <li>Read the <strong>Overview</strong>: the health score, why it is what it is, and the quick wins.</li>
+          <li>Open <strong>Unused</strong>, keep the confidence filter on <strong>High</strong>, check what you don't need and press <strong>Move to Quarantine…</strong></li>
+          <li>Open <strong>Missing</strong> and double-click a row to jump to the broken GameObject.</li>
+          <li>Changed your mind? <strong>Quarantine → Restore Session</strong> puts everything back.</li>
+        </ol>
+        <p class="note">Tip: add <code>/ProjectDoctorQuarantine/</code> to your <code>.gitignore</code> so quarantined files never end up in a commit. Project Doctor offers to do this after your first quarantine.</p>
+      </section>
+
+      <section class="container section">
+        <div class="callout">
+          <div>
+            <h2 class="callout-title">Questions or a bug?</h2>
+            <p>Write to <a href="mailto:{{supportEmail}}?subject=Project%20Doctor%20support">{{supportEmail}}</a> or read the FAQ.</p>
+          </div>
+          <a class="btn btn-primary" href="/support/">Support &amp; FAQ</a>
+        </div>
+      </section>
+    </main>
+
+    <!--@footer-->
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!--@meta description="Burak Yıldız builds Unity editor tools, games and AI experiments. Play a 3D space shooter where every planet is one of my 25 projects, or browse the list." path="/"-->
+    <script>
+      // Pick the view before first paint: saved choice, #list, or the list when motion is reduced.
+      (function () {
+        var d = document.documentElement, v = null;
+        d.classList.add('js');
+        try { v = JSON.parse(localStorage.getItem('bydev.view')); } catch (e) {}
+        if (location.hash === '#list' || location.hash === '#game') v = location.hash.slice(1);
+        if (v !== 'game' && v !== 'list') {
+          v = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 'list' : 'game';
+        }
+        d.dataset.view = v;
+      })();
+    </script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{name}}",
+        "jobTitle": "{{role}}",
+        "url": "{{siteUrl}}/",
+        "sameAs": ["{{github}}", "{{itch}}", "{{huggingface}}"]
+      }
+    </script>
+  </head>
+  <body data-page="home">
+    <!--@header:home-->
+
+    <main id="main">
+      <section class="stage" id="stage" aria-labelledby="stage-title">
+        <canvas id="game" tabindex="0"
+          aria-label="3D space shooter. Every planet is a project: aim with the mouse or the arrow keys and shoot a planet three times to open its card. The List view button shows the same projects without the game."></canvas>
+
+        <div class="hud">
+          <div class="hud-intro">
+            <h1 class="intro-title" id="stage-title">{{name}}</h1>
+            <p class="intro-line">Unity tools, games and AI experiments. <strong>Every planet is a project: shoot it to open it.</strong></p>
+          </div>
+          <div class="hud-controls">
+            <p class="counter" aria-live="polite">
+              <span class="counter-num"><span id="discovered-count">0</span> / <span id="discovered-total">25</span></span>
+              projects discovered
+            </p>
+            <button type="button" class="icon-btn" id="sound-toggle" aria-pressed="false" aria-label="Sound effects" title="Sound effects">
+              <svg class="icon icon-sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 10l4 4"/><path d="M21 10l-4 4"/></svg>
+              <svg class="icon icon-sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/><path d="M19 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+            </button>
+            <button type="button" class="btn btn-ghost btn-sm" data-view-toggle="list">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M4 13h7v7H4z"/><path d="M13 13h7v7h-7z"/></svg>
+              List view
+            </button>
+          </div>
+        </div>
+
+        <p class="hud-hint">
+          <span class="hint-desktop">Aim: mouse or <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> · Fire: click, hold or <kbd>Space</kbd> · 3 hits per planet</span>
+          <span class="hint-touch">Tap a planet to shoot · hold to keep firing</span>
+        </p>
+      </section>
+
+      <section class="container list-view" id="list-view" aria-labelledby="list-title">
+        <div class="list-intro">
+          <div>
+            <h1 class="page-title" id="list-title" tabindex="-1">{{name}}</h1>
+            <p class="lead">I build Unity editor tools, games and AI experiments. Here is the work, without the game.</p>
+          </div>
+          <button type="button" class="btn btn-primary js-only" data-view-toggle="game">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15l-3-3c1.5-4.5 4.5-8 10-9-1 5.5-4.5 8.5-9 10"/><path d="M9 12H5l2-4h4"/><path d="M12 15v4l4-2v-4"/><path d="M7 17c-1.5 0-3 1.5-3 3 1.5 0 3-1.5 3-3"/></svg>
+            Play the game
+          </button>
+        </div>
+        <!--@projects-->
+      </section>
+    </main>
+
+    <dialog class="modal celebrate" id="celebrate" aria-labelledby="celebrate-title">
+      <div class="modal-inner">
+        <div class="celebrate-body">
+          <p class="celebrate-kicker" id="celebrate-count"></p>
+          <h2 id="celebrate-title" tabindex="-1">Every project discovered!</h2>
+          <p>Thanks for playing. If something here caught your eye, or you'd like to work together, I'd love to hear from you.</p>
+          <div class="card-links">
+            <a class="btn btn-primary" href="/contact/">Get in touch</a>
+            <button type="button" class="btn btn-ghost" data-close>Keep playing</button>
+            <button type="button" class="btn btn-link" id="reset-progress">Reset progress</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!--@footer-->
+  </body>
+</html>

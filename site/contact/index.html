@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!--@meta title="Contact" description="Get in touch with Burak Yıldız: e-mail, GitHub, itch.io and Hugging Face." path="/contact/"-->
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="contact">
+    <!--@header:contact-->
+
+    <main id="main" class="container page">
+      <h1 class="page-title">Contact</h1>
+      <p class="lead">Questions, collaboration ideas or job opportunities are all welcome.</p>
+
+      <section class="contact-card" aria-labelledby="mail">
+        <div>
+          <h2 id="mail" class="contact-card-title">E-mail</h2>
+          <p><a class="big-link" href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
+          <p class="muted">Need help with an Asset Store package? Use the <a href="/support/">support page</a>, it gets there faster.</p>
+        </div>
+        <div class="contact-card-actions">
+          <a class="btn btn-primary" href="mailto:{{contactEmail}}">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Write an e-mail
+          </a>
+          <button type="button" class="btn btn-ghost js-only" data-copy="{{contactEmail}}">Copy address</button>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="elsewhere">
+        <h2 id="elsewhere" class="section-title">Elsewhere</h2>
+        <ul class="social-grid" role="list">
+          <li>
+            <a class="social" href="{{github}}" target="_blank" rel="me noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              <span><strong>GitHub</strong><span class="muted">Source code for most projects</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="social" href="{{itch}}" target="_blank" rel="me noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4M8 10v4"/><path d="M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.6 6A3 3 0 0 0 5 18c1 0 1.9-.5 2.4-1.3L9 15h6l1.6 1.7c.5.8 1.4 1.3 2.4 1.3a3 3 0 0 0 2.9-3.4l-.6-6A4 4 0 0 0 17.3 5z"/></svg>
+              <span><strong>itch.io</strong><span class="muted">Playable builds</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="social" href="{{huggingface}}" target="_blank" rel="me noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5z"/><path d="M3.5 7.25 12 12l8.5-4.75"/><path d="M12 12v9.5"/></svg>
+              <span><strong>Hugging Face</strong><span class="muted">Trained models</span></span>
+            </a>
+          </li>
+          <!--@if linkedin-->
+          <li>
+            <a class="social" href="{{linkedin}}" target="_blank" rel="me noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              <span><strong>LinkedIn</strong><span class="muted">Work history</span></span>
+            </a>
+          </li>
+          <!--@endif-->
+        </ul>
+      </section>
+    </main>
+
+    <!--@footer-->
+  </body>
+</html>
