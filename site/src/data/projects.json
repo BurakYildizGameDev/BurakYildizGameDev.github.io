@@ -1,28 +1,5 @@
 [
   {
-    "id": "project-doctor",
-    "title": "Project Doctor",
-    "tagline": "Find unused and broken assets in Unity and clean them up safely.",
-    "description": "An editor-only Unity package that builds a dependency graph of everything under Assets/, works out what your build can actually reach and finds missing scripts and broken references down to the field. Cleanup goes through a quarantine that keeps GUIDs, so every move can be undone.",
-    "highlights": [
-      "Reachability from the real build roots: Build Settings scenes, Resources, Addressables, AssetBundles and packages",
-      "Missing scripts and broken references located down to the GameObject, component and field",
-      "Quarantine instead of delete: files keep their .meta, so GUIDs and references reconnect on restore",
-      "About 6 seconds for 11,000 assets without freezing the Editor; rescans reuse what didn't change"
-    ],
-    "status": "Coming soon to the Unity Asset Store",
-    "tech": ["C#", "Unity Editor", "UI Toolkit"],
-    "categories": ["Unity"],
-    "icon": "pulse",
-    "color": "#00e5ff",
-    "year": 2026,
-    "links": {
-      "store": "",
-      "docs": "/project-doctor/"
-    },
-    "featured": true
-  },
-  {
     "id": "nomiro-merge-kitchen",
     "title": "Nomiro Merge Kitchen",
     "tagline": "Drop ingredients, merge matching ones and cook your way from an olive to a cake.",
@@ -43,7 +20,8 @@
     "links": {
       "googleplay": "https://play.google.com/store/apps/details?id=com.burakgames.nomiromergekitchen"
     },
-    "featured": true
+    "featured": true,
+    "released": true
   },
   {
     "id": "megabit-tycoon",
@@ -56,7 +34,7 @@
       "Procedurally synthesized audio, offline progress and seeded daily quests",
       "31 NUnit tests and a soak tester that runs 3,600+ frames with zero allocations in the steady state"
     ],
-    "status": "Playable in the browser",
+    "status": "Playable in the browser · itch.io",
     "tech": ["C#", "Unity 6", "URP 2D", "WebGL", "Android"],
     "categories": ["Unity", "Game"],
     "icon": "gauge",
@@ -66,6 +44,153 @@
       "play": "https://burakyildizgamedev.github.io/SpeedDownload-Idle-Megabit-Tycoon/",
       "itch": "https://burak-yildiz.itch.io/megabit-tycoon",
       "github": "https://github.com/BurakYildizGameDev/SpeedDownload-Idle-Megabit-Tycoon"
+    },
+    "featured": true,
+    "released": true
+  },
+  {
+    "id": "tokencost-web",
+    "title": "TokenCost FinOps Analyzer",
+    "tagline": "See what your LLM usage really costs and how much prompt caching saves.",
+    "description": "Paste a console usage table, drop a screenshot or load a CSV and get the real invoice, the cost you would have paid without caching and per-model quota pressure in seconds. It runs entirely in the browser, so your data never leaves your device.",
+    "highlights": [
+      "Three ways in: paste a table, drop screenshots (OCR with Tesseract.js) or load CSV / TSV / JSON / Markdown",
+      "Live prices from LiteLLM and OpenRouter, cached for 24 hours, with an offline catalog as a fallback",
+      "CSV, PDF and Markdown reports plus shareable links, with no server involved",
+      "Zero runtime dependencies: plain SVG charts, 5 languages and 3 currencies"
+    ],
+    "status": "Live web app",
+    "image": "images/projects/tokencost.webp",
+    "tech": ["JavaScript", "Tesseract.js", "SVG", "GitHub Pages"],
+    "categories": ["Web", "AI"],
+    "icon": "coin",
+    "color": "#34d399",
+    "year": 2026,
+    "links": {
+      "live": "https://burakyildizgamedev.github.io/tokencost-web/",
+      "github": "https://github.com/BurakYildizGameDev/tokencost-web"
+    },
+    "featured": true,
+    "released": true
+  },
+  {
+    "id": "dictalearn",
+    "title": "DictaLearn",
+    "tagline": "Offline English dictation and shadowing practice for web and Android.",
+    "description": "Listen to a sentence, type what you hear, see a word-level diff, then translate and shadow it out loud. A React + TypeScript PWA and a native Kotlin / Jetpack Compose app share one lesson format and work fully offline, with no account, server or telemetry.",
+    "highlights": [
+      "36 graded classics at A2 and B1: 13,000 narrated sentences, about 23 hours of audio",
+      "Word-level Levenshtein diff that marks mistakes by shape as well as colour, for colour-blind users",
+      "Offline dictionary with 14,067 entries and spaced repetition for the words you missed",
+      "Turns your own PDFs, including scanned ones, into dictation lessons"
+    ],
+    "status": "Live web app · Android APK",
+    "image": "images/projects/dictalearn.webp",
+    "tech": ["React", "TypeScript", "PWA", "Kotlin", "Jetpack Compose"],
+    "categories": ["Web", "Mobile"],
+    "icon": "headphones",
+    "color": "#38bdf8",
+    "year": 2026,
+    "links": {
+      "live": "https://burakyildizgamedev.github.io/dictalearn/",
+      "download": "https://github.com/BurakYildizGameDev/dictalearn/releases/latest",
+      "github": "https://github.com/BurakYildizGameDev/dictalearn"
+    },
+    "featured": true,
+    "released": true
+  },
+  {
+    "id": "scroll-meter",
+    "title": "Scroll-Meter",
+    "tagline": "How far does your thumb travel? Scrolling measured in meters and kilometers.",
+    "description": "An Android digital well-being tracker that turns vertical scrolling across all your apps into physical distance, so doomscrolling becomes something you can see. It never encourages more scrolling; it makes the habit concrete.",
+    "highlights": [
+      "Hybrid dual-engine architecture combining usage access and accessibility events",
+      "Micro-scroll engine tuned for 120 / 144 Hz LTPO displays, with an on-screen ruler for calibration",
+      "Fully offline with no internet permission; buffered writes to save battery",
+      "Clean Architecture + MVI, 9 languages and 109 passing tests"
+    ],
+    "status": "Android APK released",
+    "tech": ["Kotlin", "Jetpack Compose", "Android", "MVI"],
+    "categories": ["Mobile"],
+    "icon": "phone",
+    "color": "#10b981",
+    "year": 2026,
+    "links": {
+      "download": "https://github.com/BurakYildizGameDev/Scroll-Meter/releases/latest",
+      "github": "https://github.com/BurakYildizGameDev/Scroll-Meter"
+    },
+    "featured": true,
+    "released": true
+  },
+  {
+    "id": "turkish-emotion",
+    "title": "Turkish Text Emotion Classifier",
+    "tagline": "8-class emotion detection for Turkish text, fine-tuned from BERTurk.",
+    "description": "The whole pipeline: building the dataset, fine-tuning BERTurk, ablation studies and a statistical evaluation, plus a Streamlit demo. Classes: happiness, sadness, anger, fear, surprise, disgust, love and neutral. The trained model is published on Hugging Face.",
+    "highlights": [
+      "Test macro-F1 0.812 on 8,875 human-labelled samples, averaged over 3 seeds",
+      "Beats XLM-RoBERTa, mBERT and TF-IDF; every gap significant (paired bootstrap + Holm, p < 0.001)",
+      "Per-source results reported honestly: about 0.62 on translated GoEmotions, about 0.81 on TREMO majority",
+      "Ablations show silver data hurts and weak labels change nothing"
+    ],
+    "status": "Model on Hugging Face",
+    "tech": ["Python", "PyTorch", "Transformers", "Streamlit"],
+    "categories": ["AI"],
+    "icon": "smile",
+    "color": "#f472b6",
+    "year": 2025,
+    "links": {
+      "model": "https://huggingface.co/BurakshDev/berturk-turkish-emotion-8class",
+      "github": "https://github.com/BurakYildizGameDev/Turkish-Text-Emotion-Measurement-Artificial-Intelligence"
+    },
+    "featured": true,
+    "released": true
+  },
+  {
+    "id": "turkish-sts-ensemble",
+    "title": "Turkish Paraphrase Detection",
+    "tagline": "MiniLM, a Siamese Bi-LSTM and lexical features stacked into gradient boosting.",
+    "description": "Decides whether two Turkish sentences mean the same thing. Multilingual MiniLM embeddings, a Siamese Bi-LSTM with attention and four lexical similarity features are stacked into Random Forest, XGBoost and LightGBM models.",
+    "highlights": [
+      "F1 0.880 with LightGBM vs 0.832 for zero-shot MiniLM, on an anchor-grouped split",
+      "620,089 pairs from three public datasets, deduplicated to 326,279 unique pairs",
+      "Live demo on Hugging Face that runs entirely in the browser"
+    ],
+    "status": "Live demo on Hugging Face",
+    "image": "images/projects/turkish-sts.webp",
+    "tech": ["Python", "PyTorch", "Sentence Transformers", "XGBoost", "LightGBM"],
+    "categories": ["AI"],
+    "icon": "equals",
+    "color": "#c084fc",
+    "year": 2025,
+    "links": {
+      "live": "https://huggingface.co/spaces/BurakshDev/turkish-paraphrase-detection",
+      "github": "https://github.com/BurakYildizGameDev/turkish-sts-ensemble"
+    },
+    "featured": true,
+    "released": true
+  },
+  {
+    "id": "project-doctor",
+    "title": "Project Doctor",
+    "tagline": "Find unused and broken assets in Unity and clean them up safely.",
+    "description": "An editor-only Unity package that builds a dependency graph of everything under Assets/, works out what your build can actually reach and finds missing scripts and broken references down to the field. Cleanup goes through a quarantine that keeps GUIDs, so every move can be undone.",
+    "highlights": [
+      "Reachability from the real build roots: Build Settings scenes, Resources, Addressables, AssetBundles and packages",
+      "Missing scripts and broken references located down to the GameObject, component and field",
+      "Quarantine instead of delete: files keep their .meta, so GUIDs and references reconnect on restore",
+      "About 6 seconds for 11,000 assets without freezing the Editor; rescans reuse what didn't change"
+    ],
+    "status": "Coming soon to the Unity Asset Store",
+    "tech": ["C#", "Unity Editor", "UI Toolkit"],
+    "categories": ["Unity"],
+    "icon": "pulse",
+    "color": "#00e5ff",
+    "year": 2026,
+    "links": {
+      "store": "",
+      "docs": "/project-doctor/"
     },
     "featured": true
   },
@@ -113,101 +238,6 @@
     "featured": true
   },
   {
-    "id": "tokencost-web",
-    "title": "TokenCost FinOps Analyzer",
-    "tagline": "See what your LLM usage really costs and how much prompt caching saves.",
-    "description": "Paste a console usage table, drop a screenshot or load a CSV and get the real invoice, the cost you would have paid without caching and per-model quota pressure in seconds. It runs entirely in the browser, so your data never leaves your device.",
-    "highlights": [
-      "Three ways in: paste a table, drop screenshots (OCR with Tesseract.js) or load CSV / TSV / JSON / Markdown",
-      "Live prices from LiteLLM and OpenRouter, cached for 24 hours, with an offline catalog as a fallback",
-      "CSV, PDF and Markdown reports plus shareable links, with no server involved",
-      "Zero runtime dependencies: plain SVG charts, 5 languages and 3 currencies"
-    ],
-    "status": "Live",
-    "image": "images/projects/tokencost.webp",
-    "tech": ["JavaScript", "Tesseract.js", "SVG", "GitHub Pages"],
-    "categories": ["Web", "AI"],
-    "icon": "coin",
-    "color": "#34d399",
-    "year": 2026,
-    "links": {
-      "live": "https://burakyildizgamedev.github.io/tokencost-web/",
-      "github": "https://github.com/BurakYildizGameDev/tokencost-web"
-    },
-    "featured": true
-  },
-  {
-    "id": "dictalearn",
-    "title": "DictaLearn",
-    "tagline": "Offline English dictation and shadowing practice for web and Android.",
-    "description": "Listen to a sentence, type what you hear, see a word-level diff, then translate and shadow it out loud. A React + TypeScript PWA and a native Kotlin / Jetpack Compose app share one lesson format and work fully offline, with no account, server or telemetry.",
-    "highlights": [
-      "36 graded classics at A2 and B1: 13,000 narrated sentences, about 23 hours of audio",
-      "Word-level Levenshtein diff that marks mistakes by shape as well as colour, for colour-blind users",
-      "Offline dictionary with 14,067 entries and spaced repetition for the words you missed",
-      "Turns your own PDFs, including scanned ones, into dictation lessons"
-    ],
-    "status": "Live · Android APK",
-    "image": "images/projects/dictalearn.webp",
-    "tech": ["React", "TypeScript", "PWA", "Kotlin", "Jetpack Compose"],
-    "categories": ["Web", "Mobile"],
-    "icon": "headphones",
-    "color": "#38bdf8",
-    "year": 2026,
-    "links": {
-      "live": "https://burakyildizgamedev.github.io/dictalearn/",
-      "download": "https://github.com/BurakYildizGameDev/dictalearn/releases/latest",
-      "github": "https://github.com/BurakYildizGameDev/dictalearn"
-    },
-    "featured": true
-  },
-  {
-    "id": "scroll-meter",
-    "title": "Scroll-Meter",
-    "tagline": "How far does your thumb travel? Scrolling measured in meters and kilometers.",
-    "description": "An Android digital well-being tracker that turns vertical scrolling across all your apps into physical distance, so doomscrolling becomes something you can see. It never encourages more scrolling; it makes the habit concrete.",
-    "highlights": [
-      "Hybrid dual-engine architecture combining usage access and accessibility events",
-      "Micro-scroll engine tuned for 120 / 144 Hz LTPO displays, with an on-screen ruler for calibration",
-      "Fully offline with no internet permission; buffered writes to save battery",
-      "Clean Architecture + MVI, 9 languages and 109 passing tests"
-    ],
-    "status": "Android APK",
-    "tech": ["Kotlin", "Jetpack Compose", "Android", "MVI"],
-    "categories": ["Mobile"],
-    "icon": "phone",
-    "color": "#10b981",
-    "year": 2026,
-    "links": {
-      "download": "https://github.com/BurakYildizGameDev/Scroll-Meter/releases/latest",
-      "github": "https://github.com/BurakYildizGameDev/Scroll-Meter"
-    },
-    "featured": true
-  },
-  {
-    "id": "turkish-emotion",
-    "title": "Turkish Text Emotion Classifier",
-    "tagline": "8-class emotion detection for Turkish text, fine-tuned from BERTurk.",
-    "description": "The whole pipeline: building the dataset, fine-tuning BERTurk, ablation studies and a statistical evaluation, plus a Streamlit demo. Classes: happiness, sadness, anger, fear, surprise, disgust, love and neutral. The trained model is published on Hugging Face.",
-    "highlights": [
-      "Test macro-F1 0.812 on 8,875 human-labelled samples, averaged over 3 seeds",
-      "Beats XLM-RoBERTa, mBERT and TF-IDF; every gap significant (paired bootstrap + Holm, p < 0.001)",
-      "Per-source results reported honestly: about 0.62 on translated GoEmotions, about 0.81 on TREMO majority",
-      "Ablations show silver data hurts and weak labels change nothing"
-    ],
-    "status": "Model on Hugging Face",
-    "tech": ["Python", "PyTorch", "Transformers", "Streamlit"],
-    "categories": ["AI"],
-    "icon": "smile",
-    "color": "#f472b6",
-    "year": 2025,
-    "links": {
-      "model": "https://huggingface.co/BurakshDev/berturk-turkish-emotion-8class",
-      "github": "https://github.com/BurakYildizGameDev/Turkish-Text-Emotion-Measurement-Artificial-Intelligence"
-    },
-    "featured": true
-  },
-  {
     "id": "survivor-detection",
     "title": "Acoustic Survivor Detection Under Rubble",
     "tagline": "Listening for stressed and panicked voices after an earthquake.",
@@ -251,26 +281,79 @@
     "featured": true
   },
   {
-    "id": "turkish-sts-ensemble",
-    "title": "Turkish Paraphrase Detection",
-    "tagline": "MiniLM, a Siamese Bi-LSTM and lexical features stacked into gradient boosting.",
-    "description": "Decides whether two Turkish sentences mean the same thing. Multilingual MiniLM embeddings, a Siamese Bi-LSTM with attention and four lexical similarity features are stacked into Random Forest, XGBoost and LightGBM models.",
+    "id": "fix-and-route",
+    "title": "Fix & Route",
+    "tagline": "A repair-and-routing puzzle: wire the machines so every signal reaches its door.",
+    "description": "A mobile puzzle game in Unity 6. Each level is a broken machine: place chips, screws and relays so signals flow in the right order and every door opens. Later chapters add a second tool with sequential dependencies.",
     "highlights": [
-      "F1 0.880 with LightGBM vs 0.832 for zero-shot MiniLM, on an anchor-grouped split",
-      "620,089 pairs from three public datasets, deduplicated to 326,279 unique pairs",
-      "Live demo on Hugging Face that runs entirely in the browser"
+      "150 levels, every one verified by an automatic solver",
+      "1,168 passing acceptance tests across about 12,100 lines of C#",
+      "Simulation engine with one- and two-tool chains and sequential dependencies",
+      "62 sprites, a colour-blind mode and full Turkish and English UI"
     ],
-    "status": "Live demo",
-    "image": "images/projects/turkish-sts.webp",
-    "tech": ["Python", "PyTorch", "Sentence Transformers", "XGBoost", "LightGBM"],
-    "categories": ["AI"],
-    "icon": "equals",
+    "tech": ["C#", "Unity 6", "URP", "Android"],
+    "categories": ["Unity", "Game", "Mobile"],
+    "icon": "route",
+    "color": "#22c55e",
+    "year": 2026,
+    "links": {},
+    "featured": true
+  },
+  {
+    "id": "my-colorful-house",
+    "title": "My Colorful House",
+    "tagline": "A cozy colour puzzle: bring every room of the house back to colour.",
+    "description": "A mobile puzzle game where each room starts grey and every solved level paints part of its furniture back in. Rooms are drawn as one illustration in colour, white and grey, and the game cuts each piece of furniture out with masks, so light, angle and shadow stay consistent.",
+    "highlights": [
+      "Modes: Classic, Memory, Limited Drops, Customer Order and Dual Zone",
+      "MVP scope: 4 rooms and 40 levels with room finales, hints and an album",
+      "Furniture is cut from full-room art with masks instead of separate sprites",
+      "Edit-mode tests and a phase-gated roadmap"
+    ],
+    "tech": ["C#", "Unity 6", "URP", "Android"],
+    "categories": ["Unity", "Game", "Mobile"],
+    "icon": "droplet",
+    "color": "#f472b6",
+    "year": 2026,
+    "links": {},
+    "featured": true
+  },
+  {
+    "id": "handscript",
+    "title": "HandScript AI",
+    "tagline": "Turns your own handwriting into a real installable font.",
+    "description": "A native Android app: draw your handwriting with a finger or stylus, and it analyses the strokes as vectors and compiles a real .ttf font from them, so PDF and Word documents carry your handwriting as text instead of pictures.",
+    "highlights": [
+      "Compiles real .ttf fonts; upright and slanted styles become separate font families",
+      "Natural variation: repeated letters never reuse the same variant, plus jitter and micro-rotation",
+      "Cursive mode joins letters with smooth Bézier ligatures",
+      "Fully offline; handwriting data encrypted with Android Keystore and SQLCipher"
+    ],
+    "tech": ["Kotlin", "Jetpack Compose", "C++17 NDK", "SQLCipher", "Hilt"],
+    "categories": ["Mobile", "AI"],
+    "icon": "pen",
     "color": "#c084fc",
-    "year": 2025,
-    "links": {
-      "live": "https://huggingface.co/spaces/BurakshDev/turkish-paraphrase-detection",
-      "github": "https://github.com/BurakYildizGameDev/turkish-sts-ensemble"
-    },
+    "year": 2026,
+    "links": {},
+    "featured": true
+  },
+  {
+    "id": "codementor-ai",
+    "title": "CodeMentor AI",
+    "tagline": "A code mentor that never fixes your code: it asks Socratic questions instead.",
+    "description": "Static analysis, a local compiler and an LLM find the bug in a student's code, then hold back the answer and ask the questions that lead the student to find it. Built for Turkish students.",
+    "highlights": [
+      "LLM output never reaches the student directly; a leak guard drops questions that reveal the fix (0% measured leakage)",
+      "Syntax errors and known pitfalls found statically; on a syntax error the LLM is never called",
+      "Graduated hints from concept to line to direction, never the answer",
+      "Every prompt and rule change evaluated on 166 hand-labelled samples"
+    ],
+    "tech": ["Python", "LLM", "Static analysis"],
+    "categories": ["AI"],
+    "icon": "bulb",
+    "color": "#facc15",
+    "year": 2026,
+    "links": {},
     "featured": true
   },
   {
@@ -517,6 +600,352 @@
     "links": {
       "github": "https://github.com/BurakYildizGameDev/produce-and-sell-click-game"
     },
+    "featured": false
+  },
+  {
+    "id": "space-runner",
+    "title": "Uzay Kaçışı (Space Runner)",
+    "tagline": "3D endless runner in a square space tunnel: run on the floor, walls and ceiling.",
+    "description": "A portrait 3D endless runner for mobile. An astronaut runs through a square tunnel, switches between the floor, both walls and the ceiling to dodge obstacles, collects plasma cores and keeps ahead of the UFO chasing them.",
+    "highlights": [
+      "4 surfaces × 3 lanes: swipe past the outer lane to jump around the corner onto the next wall",
+      "Speed ramps from 18 to 46 m/s; FOV and music tempo rise with it",
+      "Plasma cores to collect and a UFO that catches you if you slow down"
+    ],
+    "tech": ["C#", "Unity 6", "URP", "Android"],
+    "categories": ["Unity", "Game", "Mobile"],
+    "icon": "rocket",
+    "color": "#818cf8",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "inferno-hole",
+    "title": "InfernoHole",
+    "tagline": "Hole.io with a twist: the hole is a fire pit, and it keeps going out.",
+    "description": "A 3D hybrid-casual mobile game. Drag a burning pit around the map; anything smaller than the pit falls in and burns. The fire keeps dying down, so you have to keep feeding it, and water barrels and hydrants shrink it.",
+    "highlights": [
+      "Goal: burn a share of the map before time runs out or the fire dies",
+      "Water barrels and fire hydrants as hazards that shrink the pit",
+      "First version built entirely from primitives, generated materials and particle systems"
+    ],
+    "tech": ["C#", "Unity 6", "Android"],
+    "categories": ["Unity", "Game", "Mobile"],
+    "icon": "flame",
+    "color": "#ef4444",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "screw-word",
+    "title": "Screw Word: Picture Puzzle",
+    "tagline": "Unscrew the letter blocks and spell the word behind the picture.",
+    "description": "A word puzzle for mobile built around screws: letter blocks are screwed onto a board, some locked under others, and you free them in the right order to spell the word the picture shows. Prefabs and scenes are generated by code builders, not by hand.",
+    "highlights": [
+      "Screw and letter-block mechanic with z-order locks",
+      "Planned scale of 500+ levels in several languages",
+      "In-house tween library with 15 easing curves instead of DOTween",
+      "Zero compile errors or warnings, with automated tests"
+    ],
+    "tech": ["C#", "Unity 6", "Android"],
+    "categories": ["Unity", "Game", "Mobile"],
+    "icon": "image",
+    "color": "#fbbf24",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "clickpos",
+    "title": "ClickPOS: POS Tycoon",
+    "tagline": "Idle clicker where you grow from one street-stall card reader to a payment empire.",
+    "description": "An idle / incremental clicker in Unity 6. You start with a single POS terminal at a kiosk and build store chains across 10 economic tiers. Exchange rates move in real time, so buying currency low and selling high becomes a second core loop next to clicking.",
+    "highlights": [
+      "Live currency rates with volatility and trend momentum",
+      "10 economic tiers from a street stall to a store empire",
+      "Separate Core, Services and Editor assemblies with edit-mode tests"
+    ],
+    "tech": ["C#", "Unity 6", "URP"],
+    "categories": ["Unity", "Game"],
+    "icon": "cash",
+    "color": "#10b981",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "build-automator",
+    "title": "Build Automator for Unity",
+    "tagline": "One-click and CI builds for Unity, with settings kept in the project.",
+    "description": "An editor tool in development as a UPM package. Build profiles live in ScriptableObject assets that go into Git instead of EditorPrefs, builds can run headless from a CI server, and uploads to Steam (SteamCMD) and itch.io (butler) are driven from the editor.",
+    "highlights": [
+      "Build settings as versioned ScriptableObject assets",
+      "Headless command-line builds for CI",
+      "SteamCMD and butler upload steps",
+      "UPM package with separate Runtime, Editor, Core and test assemblies"
+    ],
+    "status": "In development",
+    "tech": ["C#", "Unity Editor", "UPM", "CI"],
+    "categories": ["Unity"],
+    "icon": "hammer",
+    "color": "#38bdf8",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "drop-and-dine",
+    "title": "Drop and Dine",
+    "tagline": "An early food-drop game prototype.",
+    "description": "A small Unity 2022 game prototype about dropping food, with a main menu, a tutorial and a first level.",
+    "highlights": [
+      "Main menu, tutorial and first level"
+    ],
+    "tech": ["C#", "Unity 2022"],
+    "categories": ["Unity", "Game"],
+    "icon": "chef",
+    "color": "#fb923c",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "blockvault",
+    "title": "BlockVault: OneBlock & Raid",
+    "tagline": "Minecraft-style OneBlock with base building and raiding, for Roblox.",
+    "description": "A modular OneBlock and base-building / raiding game for Roblox, written in Luau and managed with Rojo, so the code lives in files and syncs live into Roblox Studio.",
+    "highlights": [
+      "OneBlock progression plus base building and raids",
+      "Luau code in files, built and live-synced with Rojo"
+    ],
+    "tech": ["Luau", "Roblox", "Rojo"],
+    "categories": ["Game"],
+    "icon": "cube",
+    "color": "#a3e635",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "noslowread",
+    "title": "NoSlowRead",
+    "tagline": "RSVP speed-reading trainer for Android: 21 languages, 21,000 texts.",
+    "description": "A native Android speed-reading trainer built on Rapid Serial Visual Presentation: words appear one at a time, aligned on their Optimal Recognition Point so the eye doesn't have to move along a line. Comprehension quizzes follow every text, and it works fully offline.",
+    "highlights": [
+      "21 reading languages including Arabic (RTL), Chinese, Japanese and Hindi",
+      "1,000 built-in texts per language, generated from a content pipeline",
+      "Comprehension quizzes and OCR import of your own texts",
+      "Kotlin with a C++17 core through the NDK"
+    ],
+    "tech": ["Kotlin", "C++17 NDK", "Android"],
+    "categories": ["Mobile"],
+    "icon": "eyeFast",
+    "color": "#f97316",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "pronunciation-coach",
+    "title": "Offline Pronunciation Coach",
+    "tagline": "Phoneme-level pronunciation feedback for language learners, fully offline.",
+    "description": "A native Android app for second-language learners: you speak, Vosk turns the 16 kHz audio into phonemes on the device, a Needleman-Wunsch alignment compares them with the target word and you get a score per phoneme plus a tip such as where to put your tongue.",
+    "highlights": [
+      "Offline speech recognition with Vosk (Kaldi), no cloud",
+      "Needleman-Wunsch dynamic programming for phonetic alignment",
+      "Per-phoneme scores and coaching tips based on the learner's first language",
+      "Kotlin, Jetpack Compose, Room and Hilt, API 26–36"
+    ],
+    "tech": ["Kotlin", "Jetpack Compose", "Vosk", "Room", "Hilt"],
+    "categories": ["Mobile", "AI"],
+    "icon": "mic",
+    "color": "#2dd4bf",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "whisper-transcribe",
+    "title": "WhisperTranscribe",
+    "tagline": "Offline speech-to-text and summaries on Android with whisper.cpp.",
+    "description": "An offline-first Android app that records audio, transcribes it on the device with whisper.cpp and summarises the result, without sending anything to a server.",
+    "highlights": [
+      "whisper.cpp through a JNI bridge, with tiny and base GGML models",
+      "16 kHz mono recording with a live amplitude pulse",
+      "Hybrid summaries: a rule-based engine that needs no LLM, plus an optional model",
+      "Clean Architecture / MVVM with Room"
+    ],
+    "tech": ["Kotlin", "Jetpack Compose", "whisper.cpp", "JNI", "Room"],
+    "categories": ["Mobile", "AI"],
+    "icon": "wave",
+    "color": "#60a5fa",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "clearvoice",
+    "title": "ClearVoice AI",
+    "tagline": "Live noise suppression for recordings on Android.",
+    "description": "An Android app that removes background noise from your voice with RNNoise, both on recordings and live through a background service, with an adjustable suppression level.",
+    "highlights": [
+      "RNNoise noise suppression through a native audio engine",
+      "Live denoise service plus recording, playback and WAV export",
+      "Adjustable suppression intensity"
+    ],
+    "tech": ["Kotlin", "Jetpack Compose", "RNNoise", "NDK"],
+    "categories": ["Mobile", "AI"],
+    "icon": "mic",
+    "color": "#22d3ee",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "optilens",
+    "title": "OptiLens Empathy",
+    "tagline": "See the world through myopia, astigmatism or colour blindness, live on your camera.",
+    "description": "An Android app that simulates common vision problems on the live camera feed, so a parent, teacher or friend can understand what someone else sees. It is a visual simulation, not a medical tool, and makes no measurements.",
+    "highlights": [
+      "Myopia and hyperopia from 0.25 to 6 dioptres, astigmatism with axis, cataract and night driving glare",
+      "Protanopia, deuteranopia, tritanopia and achromatopsia",
+      "Separate Play and F-Droid (FOSS) builds from one codebase"
+    ],
+    "tech": ["Kotlin", "Android", "Camera"],
+    "categories": ["Mobile"],
+    "icon": "eye",
+    "color": "#34d399",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "systelemetry",
+    "title": "SysTelemetry",
+    "tagline": "Battery, temperature, network and app impact on Android, fully offline.",
+    "description": "An open-source Android tool that tracks hardware telemetry (battery, temperature, power), network usage and app usage, and shows it in one persistent notification and a simple UI. It has no internet permission, so nothing leaves the device.",
+    "highlights": [
+      "Battery, temperature, power and discharge-rate estimates",
+      "Per-app network and usage impact",
+      "No INTERNET permission at all"
+    ],
+    "tech": ["Kotlin", "Jetpack Compose", "Android"],
+    "categories": ["Mobile"],
+    "icon": "pulse",
+    "color": "#94a3b8",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "any-where-notes",
+    "title": "Any Where Notes",
+    "tagline": "Collaborative notes for Android and Windows: Git-style history, Docs-style live editing.",
+    "description": "A shared note app built from one Flutter codebase for Android and Windows, talking to a .NET backend. The goal is Git's version safety with the live collaboration of Google Docs, behind a simple interface.",
+    "highlights": [
+      "Flutter client for Android and Windows",
+      ".NET Web API with SignalR for live updates",
+      "Rust yrs CRDT core planned for conflict-free merging"
+    ],
+    "status": "In development",
+    "tech": ["Flutter", "Dart", ".NET", "SignalR", "Rust"],
+    "categories": ["Mobile", "Web"],
+    "icon": "notes",
+    "color": "#fde047",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "memorylane",
+    "title": "MemoryLane: Time Capsule",
+    "tagline": "Write a note to your future self and lock it until a date you choose.",
+    "description": "A time capsule app: create capsules with photos, videos, audio or voice notes that stay locked until their unlock date. The backend follows Clean Architecture with CQRS on .NET 10.",
+    "highlights": [
+      "Domain, Application, Infrastructure and API layers with DDD entities",
+      "CQRS with MediatR and an automatic FluentValidation pipeline",
+      "EF Core 10 with an index on the unlock date"
+    ],
+    "tech": ["C#", ".NET 10", "MediatR", "EF Core"],
+    "categories": ["Web", "Mobile"],
+    "icon": "clock",
+    "color": "#e879f9",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "story-architect",
+    "title": "Story Architect",
+    "tagline": "AI story generator app with a token system and an API for Unity.",
+    "description": "A Flutter app with an ASP.NET Core backend that writes stories with Gemini. Each story costs a token, and a dedicated endpoint lets a Unity game pull the latest story for a user.",
+    "highlights": [
+      "ASP.NET Core 9 Web API with EF Core on SQLite",
+      "Gemini integration and a token balance per user",
+      "Flutter frontend with dev and prod flavours, plus API tests"
+    ],
+    "tech": ["Flutter", "ASP.NET Core 9", "EF Core", "Gemini"],
+    "categories": ["Mobile", "AI"],
+    "icon": "book",
+    "color": "#a78bfa",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "my-opinion",
+    "title": "My Opinion",
+    "tagline": "Drop in an idea as text or a sketch; get a clear summary and a reality check.",
+    "description": "A one-page web app: describe an idea in writing and / or with a drawing or photo, and Claude analyses it, returning a clear summary of the idea and a short reality check with its category, similar examples, strengths, weaknesses and a recommendation.",
+    "highlights": [
+      "Claude vision API reads sketches and photos as well as text",
+      "Results open on a shareable link",
+      "Daily free-use limit per IP"
+    ],
+    "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Claude API"],
+    "categories": ["Web", "AI"],
+    "icon": "bulb",
+    "color": "#fb7185",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "akademik-word",
+    "title": "Akademik Word",
+    "tagline": "A browser-based editor for theses and papers, with Word import and export.",
+    "description": "A web editor for academic writing (theses, papers, project reports) that tackles version chaos, lost changes and advisor approvals, and keeps documents local. It imports real .docx files in the browser and exports back to Word.",
+    "highlights": [
+      "Rich text editing with tables, highlights and character counts (Tiptap)",
+      ".docx import with Mammoth.js and export with docx.js, all client-side",
+      "React 19, TypeScript, Vite and Tailwind CSS v4"
+    ],
+    "tech": ["React 19", "TypeScript", "Tiptap", "Tailwind CSS"],
+    "categories": ["Web"],
+    "icon": "doc",
+    "color": "#93c5fd",
+    "year": 2026,
+    "links": {},
+    "featured": false
+  },
+  {
+    "id": "manga-maker-gemini",
+    "title": "Manga Maker for Gemini",
+    "tagline": "Batch-generates images from a prompt list through the Gemini web app.",
+    "description": "A Windows desktop app that takes a list of prompts from a document, sends them to Gemini one by one in a real Chrome window under your own account and downloads the results into a folder. No API key or quota needed.",
+    "highlights": [
+      "Reads prompts from PDF, DOCX and EPUB documents",
+      "Drives a real Chrome browser and saves every result in order",
+      "Packaged as a single Windows .exe with PyInstaller"
+    ],
+    "tech": ["Python", "Selenium", "CustomTkinter"],
+    "categories": ["AI"],
+    "icon": "sparkle",
+    "color": "#f43f5e",
+    "year": 2026,
+    "links": {},
     "featured": false
   }
 ]

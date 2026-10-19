@@ -16,7 +16,7 @@ export function createHud(stage, planets) {
   for (const p of planets.list) {
     const label = el('g-label');
     label.style.setProperty('--c', p.color);
-    label.innerHTML = `<span class="g-label-name">${esc(p.project.title)}</span><span class="g-label-hp"></span>`;
+    label.innerHTML = `<span class="g-label-name">${p.project.released ? '<b class="g-label-live">Live</b>' : ''}${esc(p.project.title)}</span><span class="g-label-hp"></span>`;
     layer.append(label);
     Object.assign(p, { label, hpEl: label.querySelector('.g-label-hp'), labelShown: true, hpShown: -1 });
   }
@@ -83,7 +83,7 @@ export function createHud(stage, planets) {
     update(camera, w, h, locked, aim, spread, showCross) {
       const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
       for (const p of planets.list) {
-        const visible = p.state !== 'dead' && p.delay <= 0;
+        const visible = p.state !== 'dead' && p.state !== 'idle' && p.delay <= 0;
         if (visible !== p.labelShown) {
           p.label.style.visibility = visible ? '' : 'hidden';
           p.labelShown = visible;

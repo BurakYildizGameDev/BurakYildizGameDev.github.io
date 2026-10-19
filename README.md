@@ -2,7 +2,8 @@
 
 Personal site with a playable portfolio: a 3D space shooter (Three.js) where every planet is a
 project. Aim with the crosshair and shoot a planet three times: each hit burns a glowing crack where
-it lands, the last one blows it apart and its card opens. A **List view** with the same cards is always one
+it lands, the last one blows it apart and its card opens. Up to 16 planets (10 on phones) are in
+play at once; each destroyed planet makes room for the next project not yet discovered. A **List view** with the same cards is always one
 click away, and it is the default when the visitor prefers reduced motion.
 
 Plain JavaScript + Vite + Three.js, no framework. Three.js is only downloaded when the game is shown.
@@ -40,6 +41,8 @@ Add an entry to `projects.json`. `icon` is one of the names in `site/src/ui/icon
 hold `play`, `live`, `store`, `docs`, `itch`, `download`, `model` and `github`. For a screenshot,
 put it in `site/public/images/projects/` (16:9 WebP) and set `"image": "images/projects/name.webp"`.
 `highlights` (a few bullet points) and `status` (e.g. "Live on Google Play") show on the card.
+Set `"released": true` for projects people can use, play or download today: they get a **Live**
+badge, appear under the Live filter and are listed first.
 
 ## Deploy (GitHub Pages)
 

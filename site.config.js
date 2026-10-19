@@ -6,10 +6,9 @@ export default {
   role: 'Unity tools & game developer',
   siteUrl: 'https://burakyildizgamedev.github.io',
 
-  // TODO: replace both before publishing. A separate support address is recommended,
-  // because the Asset Store lists it publicly.
-  contactEmail: 'hello@example.com',
-  supportEmail: 'support@example.com',
+  // The Asset Store lists the support address publicly.
+  contactEmail: 'burakyildiz0417@gmail.com',
+  supportEmail: 'burakyildiz0417@gmail.com',
 
   github: 'https://github.com/BurakYildizGameDev',
   itch: 'https://burak-yildiz.itch.io',

@@ -48,11 +48,12 @@ const chips = (items) => `<ul class="chips">${items.map((t) => `<li>${esc(t)}</l
 
 export function tileHtml(p) {
   const links = linkList(p);
-  return `<li class="tile" data-id="${esc(p.id)}" data-cats="${esc(p.categories.join(' '))}" style="--accent:${esc(p.color)}">
+  return `<li class="tile" data-id="${esc(p.id)}" data-cats="${esc([...p.categories, ...(p.released ? ['Live'] : [])].join(' '))}" style="--accent:${esc(p.color)}">
   ${coverHtml(p, 'tile-cover')}
+  ${p.released ? '<span class="live-badge tile-live"><i></i>Live</span>' : ''}
   <div class="tile-body">
     <h3 class="tile-title"><button type="button" class="tile-open" data-id="${esc(p.id)}">${esc(p.title)}</button></h3>
-    ${p.status ? `<p class="tile-status">${esc(p.status)}</p>` : ''}
+    ${p.status ? `<p class="tile-status${p.released ? ' is-live' : ''}">${esc(p.status)}</p>` : ''}
     <p class="tile-tagline">${esc(p.tagline)}</p>
     ${chips(p.tech.slice(0, 4))}
     ${links.length ? `<div class="tile-links">${links.map((l) => anchor(l, 'tile-link')).join('')}</div>` : ''}
@@ -69,7 +70,7 @@ export function detailHtml(p) {
     <p class="card-kicker">${esc(p.categories.join(' · '))}${p.year ? ` · ${p.year}` : ''}</p>
     <h2 class="card-title" id="card-title" tabindex="-1">${esc(p.title)}</h2>
     <p class="card-tagline">${esc(p.tagline)}</p>
-    ${p.status ? `<p class="card-status">${esc(p.status)}</p>` : ''}
+    ${p.status ? `<p class="card-status${p.released ? ' is-live' : ''}">${p.released ? '<i></i>' : ''}${esc(p.status)}</p>` : ''}
     <p class="card-desc">${esc(p.description)}</p>
     ${
       p.highlights?.length

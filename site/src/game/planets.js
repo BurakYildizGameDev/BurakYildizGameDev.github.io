@@ -1,12 +1,16 @@
 // Project planets in 3D: they drift through a volume in front of the camera, bounce off its edges
 // and each other, take three hits (each burns a glowing crack where the shot landed) and explode
-// on the last one. Discovered planets come back dimmed and pop with a single hit.
+// on the last one. Only a handful are in play at once; when one is destroyed the next project
+// not yet discovered takes its place, so playing on works through every project. Once all are
+// discovered they come back dimmed and pop with a single hit.
 
 import * as THREE from 'three';
 import { planetTexture, createCrackLayer, glowTexture } from './textures.js';
 
 const Z_NEAR = -1;
 const HITS = 3;
+const ACTIVE = 16; // planets in play at once (fewer on phones)
+const ACTIVE_PHONE = 10;
 
 const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
 const easeOutBack = (t) => {
@@ -32,6 +36,7 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
   const view = { w: 1, h: 1, aspect: 1, top: 0, bottom: 0 };
   let zFar = -22; // pushed further back on narrow screens, so the planets have room to spread out
   let placed = false;
+  let shown = 0; // activation counter: the discovered planet away longest comes back first
 
   const list = projects.map((project, index) => {
     const material = new THREE.MeshStandardMaterial({
@@ -100,9 +105,10 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
       discovered: discovered.has(project.id),
       hp: 0,
       maxHp: 0,
-      state: 'alive', // alive | dead | spawning
+      state: 'idle', // idle (not in play) | spawning | alive | dead
       appear: 0,
-      delay: 0.25 + index * 0.045,
+      delay: 0,
+      lastShown: 0,
       placed: false,
       textured: false,
       labelW: 140,
@@ -114,6 +120,7 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
   });
   const meshes = list.map((p) => p.mesh);
   const unpainted = [...list];
+  const outOfPlay = (p) => p.state === 'idle' || p.state === 'dead';
 
   function tint(p) {
     p.material.color.set(p.textured ? 0xffffff : p.color);
@@ -122,8 +129,10 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
 
   function paint() {
     const start = performance.now();
-    while (unpainted.length && performance.now() - start < TEXTURE_BUDGET) {
-      const p = unpainted.shift();
+    while (performance.now() - start < TEXTURE_BUDGET) {
+      const i = unpainted.findIndex((p) => p.state !== 'idle');
+      if (i < 0) return;
+      const [p] = unpainted.splice(i, 1);
       p.material.map = planetTexture(p.project, p.index);
       p.textured = true;
       tint(p);
@@ -174,7 +183,7 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
       const [sx, sy, sr] = screenOf(x, y, z, p.r);
       let gap = Infinity;
       for (const o of list) {
-        if (o === p || !o.placed || o.state === 'dead') continue;
+        if (o === p || !o.placed || outOfPlay(o)) continue;
         const op = o.group.position;
         const [ox, oy, or] = screenOf(op.x, op.y, op.z, o.r);
         gap = Math.min(gap, Math.hypot(sx - ox, sy - oy) - (sr + or) * 1.5);
@@ -194,19 +203,35 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
     p.vel.set(Math.cos(a), Math.sin(a) * 0.7, (Math.random() - 0.5) * 0.5).normalize().multiplyScalar(p.cruise);
   }
 
+  function activate(p, delay) {
+    p.state = 'spawning';
+    p.appear = 0;
+    p.delay = delay;
+    p.lastShown = ++shown;
+    place(p);
+    randomVelocity(p);
+  }
+
+  // Projects not discovered yet come first, in list order; then the discovered planet that has
+  // been out of play the longest.
+  function nextInLine(fallback) {
+    const waiting = list.filter((q) => q.state === 'idle');
+    return waiting.find((q) => !q.discovered) ?? waiting.sort((a, b) => a.lastShown - b.lastShown)[0] ?? fallback;
+  }
+
   function layout(w, h, top, bottom) {
     Object.assign(view, { w, h, aspect: w / h, top, bottom });
     zFar = view.aspect < 0.8 ? -32 : -22;
     const size = clamp(view.aspect / 1.1, 0.6, 1);
     for (const p of list) p.r = (p.project.featured ? 1.3 : 1.05) * size;
     if (!placed) {
-      for (const p of list) {
-        place(p);
-        randomVelocity(p);
-      }
+      const count = Math.min(list.length, w < 600 ? ACTIVE_PHONE : ACTIVE);
+      const first = [...list.filter((p) => !p.discovered), ...list.filter((p) => p.discovered)].slice(0, count);
+      first.forEach((p, i) => activate(p, 0.25 + i * 0.06));
       placed = true;
     } else {
       for (const p of list) {
+        if (outOfPlay(p)) continue;
         const pos = p.group.position;
         const b = bounds(p, pos.z);
         pos.x = clamp(pos.x, -b.xMax, b.xMax);
@@ -218,7 +243,7 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
   function update(dt) {
     if (unpainted.length) paint();
     for (const p of list) {
-      if (p.state === 'dead') continue;
+      if (outOfPlay(p)) continue;
       if (p.delay > 0) {
         p.delay -= dt;
         p.group.visible = false;
@@ -260,10 +285,10 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
     const n = new THREE.Vector3();
     for (let i = 0; i < list.length; i++) {
       const a = list[i];
-      if (a.state === 'dead' || a.delay > 0) continue;
+      if (outOfPlay(a) || a.delay > 0) continue;
       for (let j = i + 1; j < list.length; j++) {
         const b = list[j];
-        if (b.state === 'dead' || b.delay > 0) continue;
+        if (outOfPlay(b) || b.delay > 0) continue;
         n.subVectors(b.group.position, a.group.position);
         const d = n.length();
         const min = a.r + b.r + 0.6;
@@ -286,7 +311,7 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
   function raycast(raycaster) {
     for (const h of raycaster.intersectObjects(meshes, false)) {
       const p = h.object.userData.planet;
-      if (p.state === 'dead' || p.delay > 0 || p.appear < 0.6) continue;
+      if (outOfPlay(p) || p.delay > 0 || p.appear < 0.6) continue;
       return { planet: p, point: h.point, uv: h.uv };
     }
     return null;
@@ -314,28 +339,22 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
     return 'destroy';
   }
 
-  /** Brings a destroyed planet back, dimmed, at a fresh spot. */
+  /** After a destroyed planet's card closes: the next planet in line takes its place. */
   function respawn(id) {
     const p = list.find((p) => p.project.id === id);
     if (!p || p.state !== 'dead') return;
     setDiscovered(p, true);
     p.crack?.clear();
-    p.state = 'spawning';
-    p.appear = 0;
-    p.delay = 0.5;
-    place(p);
-    randomVelocity(p);
+    p.state = 'idle';
+    p.placed = false;
+    activate(nextInLine(p), 0.5);
   }
 
   function reset() {
     for (const p of list) {
       setDiscovered(p, false);
       p.crack?.clear();
-      if (p.state === 'dead') {
-        p.state = 'spawning';
-        p.appear = 0;
-        place(p);
-      }
+      if (p.state === 'dead') activate(p, 0.3);
     }
   }
 

@@ -4,7 +4,7 @@
 
 import { tileHtml, openCard } from './card.js';
 
-export const FILTERS = ['All', 'Unity', 'Game', 'Web', 'AI', 'Mobile'];
+export const FILTERS = ['All', 'Live', 'Unity', 'Game', 'Mobile', 'Web', 'AI'];
 
 export function listHtml(projects) {
   const featured = projects.filter((p) => p.featured);
