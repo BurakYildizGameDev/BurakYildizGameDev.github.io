@@ -6,12 +6,13 @@ it lands, the last one blows it apart and its card opens. Up to 16 planets (10 o
 play at once; each destroyed planet makes room for the next project not yet discovered. A **List view** with the same cards is always one
 click away, and it is the default when the visitor prefers reduced motion.
 
-Below the game (and the list) the home page has an About section: project stats, what I do, the
-and a contact call to action; the full story (education, journey, skills) is on `/about/`. The numbers come from `projects.json` at build time. The game
+Below the game (and the list) the home page has a short About section and links to projects by
+area; the full story (education, timeline, skills) is on `/about/`. The counts come from
+`projects.json` at build time. The game
 pauses and hands the arrow keys and Space back to the page while it is scrolled out of view.
 
 Plain JavaScript + Vite + Three.js, no framework. Three.js is only downloaded when the game is shown.
-Fonts (Inter, Space Grotesk) are self-hosted through `@fontsource-variable`.
+The font (Inter) is self-hosted through `@fontsource-variable/inter`.
 
 ## Run
 

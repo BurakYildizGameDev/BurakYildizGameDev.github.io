@@ -1,9 +1,8 @@
 // Page start-up for every page: navigation, copy buttons, and on the home page the switch between
 // the game and the list view. The game code is only downloaded when the game view is shown.
 
-// Self-hosted fonts: Inter for text, Space Grotesk for headings.
+// Self-hosted Inter, so the site doesn't call out to a font service.
 import '@fontsource-variable/inter';
-import '@fontsource-variable/space-grotesk';
 import './styles.css';
 import { projects } from './data/projects.js';
 import { enhanceList } from './ui/list.js';

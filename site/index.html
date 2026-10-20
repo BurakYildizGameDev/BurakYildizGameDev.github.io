@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <!--@meta description="Burak Yıldız builds Unity editor tools, games and AI experiments. Play a 3D space shooter where every planet is one of my {{projectCount}} projects, or browse the list." path="/"-->
+    <!--@meta description="Burak Yıldız, computer engineer and Unity developer. Every planet in this 3D space shooter is one of my {{projectCount}} projects; there is a plain list too." path="/"-->
     <script>
       // Pick the view before first paint: saved choice, #list, or the list when motion is reduced.
       (function () {
@@ -41,9 +41,8 @@
 
         <div class="hud">
           <div class="hud-intro">
-            <p class="kicker intro-kicker">{{role}}</p>
             <h1 class="intro-title" id="stage-title">{{name}}</h1>
-            <p class="intro-line">Unity tools, games and AI experiments. <strong>Every planet is a project: shoot it to open it.</strong></p>
+            <p class="intro-line">{{role}}. <strong>Every planet is one of my projects. Shoot it three times to open it.</strong></p>
           </div>
           <div class="hud-controls">
             <p class="counter" aria-live="polite">
@@ -75,9 +74,8 @@
       <section class="container list-view" id="list-view" aria-labelledby="list-title">
         <div class="list-intro">
           <div>
-            <p class="kicker">{{role}}</p>
             <h1 class="page-title" id="list-title" tabindex="-1">{{name}}</h1>
-            <p class="lead">I build Unity editor tools, games and AI experiments. Here is the work, without the game.</p>
+            <p class="lead">{{role}}. These are the same projects as in the game, as a list.</p>
           </div>
           <button type="button" class="btn btn-primary js-only" data-view-toggle="game">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15l-3-3c1.5-4.5 4.5-8 10-9-1 5.5-4.5 8.5-9 10"/><path d="M9 12H5l2-4h4"/><path d="M12 15v4l4-2v-4"/><path d="M7 17c-1.5 0-3 1.5-3 3 1.5 0 3-1.5 3-3"/></svg>
@@ -88,64 +86,24 @@
       </section>
 
       <section class="about" id="about" aria-labelledby="about-title">
-        <div class="container">
-          <ul class="stats" role="list">
-            <li><strong>{{projectCount}}</strong><span>projects built</span></li>
-            <li><strong>{{liveCount}}</strong><span>live today</span></li>
-            <li><strong>{{unityCount}}</strong><span>Unity projects</span></li>
-            <li><strong>{{aiCount}}</strong><span>AI &amp; ML projects</span></li>
-          </ul>
-
-          <div class="about-grid">
-            <div class="about-intro">
-              <p class="kicker">About</p>
-              <h2 class="section-title" id="about-title">Tools, games and AI, built end to end.</h2>
-              <p>I'm {{name}}, a computer engineer ({{school}}, {{graduated}}) and Unity developer who likes the whole path from idea to release: editor tooling that saves other developers time, games that run on phones, browsers and VR headsets, and machine learning projects that end up as usable apps.</p>
-              <p>This site is the portfolio: in the space shooter every planet is a real project, with its stack, highlights and links. Prefer a plain overview? Every project is also on the <a href="/projects/">projects page</a>.</p>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="/about/">More about me</a>
-                <a class="btn btn-ghost" href="{{github}}" target="_blank" rel="me noopener">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-
-            <ul class="services" role="list">
-              <li class="service">
-                <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg></span>
-                <div>
-                  <h3>Unity editor tools</h3>
-                  <p>Editor extensions that keep projects healthy: dependency graphs, broken-reference detection, safe cleanup and CI checks. <a href="/project-doctor/">Project Doctor</a> is the flagship.</p>
-                </div>
-              </li>
-              <li class="service">
-                <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M6 12h4M8 10v4"/><path d="M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.6 6A3 3 0 0 0 5 18c1 0 1.9-.5 2.4-1.3L9 15h6l1.6 1.7c.5.8 1.4 1.3 2.4 1.3a3 3 0 0 0 2.9-3.4l-.6-6A4 4 0 0 0 17.3 5z"/></svg></span>
-                <div>
-                  <h3>Games for mobile, web and VR</h3>
-                  <p>Merge puzzles, idle tycoons and a VR safety-training simulator for Meta Quest, built in Unity with attention to feel, performance and saves. <a href="/projects/?filter=Game">{{gameCount}} game projects</a>.</p>
-                </div>
-              </li>
-              <li class="service">
-                <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg></span>
-                <div>
-                  <h3>AI, Android and web apps</h3>
-                  <p>Fine-tuned language models published on Hugging Face, LLM tooling, native Android apps in Kotlin and browser apps. <a href="/projects/?filter=AI">{{aiCount}} AI projects</a>.</p>
-                </div>
-              </li>
+        <div class="container about-grid">
+          <div class="prose">
+            <h2 class="section-title" id="about-title">About</h2>
+            <p>I'm a computer engineer. I graduated from {{school}} in {{graduated}}, and most of what I build is in Unity: editor tools, mobile games, and the VR training simulator that was my capstone.</p>
+            <p>Right now I'm finishing Project Doctor for the Unity Asset Store. Outside Unity I write Android apps in Kotlin, and I've done some NLP work on Turkish text.</p>
+            <p class="about-links"><a href="/about/">More about me</a><span aria-hidden="true">·</span><a href="mailto:{{contactEmail}}">{{contactEmail}}</a></p>
+          </div>
+          <nav class="areas" aria-labelledby="areas-title">
+            <h3 class="areas-title" id="areas-title">Projects by area</h3>
+            <ul role="list">
+              <li><a href="/projects/?filter=Unity">Unity</a><span>{{unityCount}}</span></li>
+              <li><a href="/projects/?filter=Game">Games</a><span>{{gameCount}}</span></li>
+              <li><a href="/projects/?filter=Mobile">Mobile</a><span>{{mobileCount}}</span></li>
+              <li><a href="/projects/?filter=AI">AI</a><span>{{aiCount}}</span></li>
+              <li><a href="/projects/?filter=Web">Web</a><span>{{webCount}}</span></li>
+              <li><a href="/projects/?filter=Live">Released</a><span>{{liveCount}}</span></li>
             </ul>
-          </div>
-
-          <div class="callout cta-band">
-            <div>
-              <h2 class="callout-title">Have a project or a role in mind?</h2>
-              <p>Tools, games, prototypes or a full-time position: tell me what you're working on.</p>
-            </div>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="/contact/">Get in touch</a>
-              <a class="btn btn-ghost" href="/projects/">See all projects</a>
-            </div>
-          </div>
+          </nav>
         </div>
       </section>
     </main>
