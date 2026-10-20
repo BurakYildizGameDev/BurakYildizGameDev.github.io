@@ -1,13 +1,41 @@
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© {{year}} {{name}} · Built with JavaScript and Three.js.</p>
-    <ul class="footer-links">
-      <li><a href="{{github}}" target="_blank" rel="me noopener">GitHub</a></li>
-      <li><a href="{{itch}}" target="_blank" rel="me noopener">itch.io</a></li>
-      <li><a href="{{huggingface}}" target="_blank" rel="me noopener">Hugging Face</a></li>
-      <!--@if linkedin--><li><a href="{{linkedin}}" target="_blank" rel="me noopener">LinkedIn</a></li><!--@endif-->
-      <li><a href="/support/">Support</a></li>
-      <li><a href="/contact/">Contact</a></li>
-    </ul>
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">BY</span>
+        <span class="brand-name">{{name}}</span>
+      </a>
+      <p>Unity editor tools, games for mobile, web and VR, and AI experiments.</p>
+      <a class="footer-mail" href="mailto:{{contactEmail}}">{{contactEmail}}</a>
+    </div>
+    <nav class="footer-col" aria-label="Site">
+      <h2 class="footer-title">Site</h2>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/project-doctor/">Project Doctor</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Elsewhere">
+      <h2 class="footer-title">Elsewhere</h2>
+      <ul class="footer-links">
+        <li><a href="{{github}}" target="_blank" rel="me noopener">GitHub</a></li>
+        <li><a href="{{itch}}" target="_blank" rel="me noopener">itch.io</a></li>
+        <li><a href="{{huggingface}}" target="_blank" rel="me noopener">Hugging Face</a></li>
+        <!--@if linkedin--><li><a href="{{linkedin}}" target="_blank" rel="me noopener">LinkedIn</a></li><!--@endif-->
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Help">
+      <h2 class="footer-title">Help</h2>
+      <ul class="footer-links">
+        <li><a href="/support/">Support &amp; FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {{year}} {{name}}. All rights reserved.</p>
+    <p>Built with JavaScript and Three.js.</p>
   </div>
 </footer>

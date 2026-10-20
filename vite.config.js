@@ -9,6 +9,7 @@ const root = resolve(import.meta.dirname, 'site');
 
 const pages = {
   home: 'index.html',
+  about: 'about/index.html',
   projects: 'projects/index.html',
   projectDoctor: 'project-doctor/index.html',
   support: 'support/index.html',
@@ -17,7 +18,9 @@ const pages = {
 };
 
 // Paths listed in sitemap.xml (404 is left out on purpose).
-const sitemapPaths = ['/', '/projects/', '/project-doctor/', '/support/', '/contact/'];
+const sitemapPaths = ['/', '/about/', '/projects/', '/project-doctor/', '/support/', '/contact/'];
+
+const countIn = (cat) => String(projects.filter((p) => p.categories.includes(cat)).length);
 
 const tokens = {
   name: site.name,
@@ -29,10 +32,22 @@ const tokens = {
   itch: site.itch,
   huggingface: site.huggingface,
   linkedin: site.linkedin,
+  cv: site.cv,
+  degree: site.education.degree,
+  school: site.education.school,
+  graduated: site.education.graduated,
   pdVersion: site.projectDoctor.version,
   pdUnity: site.projectDoctor.unity,
   pdStoreUrl: site.projectDoctor.storeUrl,
   year: String(new Date().getFullYear()),
+  // Counts for the home page, so they follow projects.json.
+  projectCount: String(projects.length),
+  liveCount: String(projects.filter((p) => p.released).length),
+  unityCount: countIn('Unity'),
+  gameCount: countIn('Game'),
+  mobileCount: countIn('Mobile'),
+  aiCount: countIn('AI'),
+  webCount: countIn('Web'),
 };
 
 const escapeAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -46,6 +61,7 @@ function metaHtml(attrs) {
   const e = escapeAttr;
   return `<title>${e(title)}</title>
     <meta name="description" content="${e(description)}">
+    <meta name="author" content="${e(site.name)}">
     <link rel="canonical" href="${e(url)}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="${e(site.name)}">

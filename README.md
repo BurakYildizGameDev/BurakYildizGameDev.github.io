@@ -6,7 +6,12 @@ it lands, the last one blows it apart and its card opens. Up to 16 planets (10 o
 play at once; each destroyed planet makes room for the next project not yet discovered. A **List view** with the same cards is always one
 click away, and it is the default when the visitor prefers reduced motion.
 
+Below the game (and the list) the home page has an About section: project stats, what I do, the
+and a contact call to action; the full story (education, journey, skills) is on `/about/`. The numbers come from `projects.json` at build time. The game
+pauses and hands the arrow keys and Space back to the page while it is scrolled out of view.
+
 Plain JavaScript + Vite + Three.js, no framework. Three.js is only downloaded when the game is shown.
+Fonts (Inter, Space Grotesk) are self-hosted through `@fontsource-variable`.
 
 ## Run
 
@@ -22,16 +27,17 @@ npm run images    # regenerate favicon, touch icon and og.png
 
 | What | File |
 |---|---|
-| Name, e-mails, social links, Project Doctor version / Asset Store URL | `site.config.js` |
+| Name, e-mails, social links, CV, education, Project Doctor version / Asset Store URL | `site.config.js` |
 | Projects (every project is a planet; `"featured": true` ones are bigger and listed first) | `site/src/data/projects.json` |
-| Pages | `site/index.html`, `site/projects/`, `site/project-doctor/`, `site/support/`, `site/contact/`, `site/404.html` |
+| Pages | `site/index.html`, `site/about/`, `site/projects/`, `site/project-doctor/`, `site/support/`, `site/contact/`, `site/404.html` |
 | Shared header / footer | `site/partials/` |
 | Game | `site/src/game/` (index: renderer and shooting, planets, ship, effects, hud, stars, textures, input, audio) |
 | Card and list view (shared by the game and the list) | `site/src/ui/card.js`, `site/src/ui/list.js` |
 | Styles | `site/src/styles.css` |
 
 The HTML pages use a few build-time placeholders, handled in `vite.config.js`:
-`{{key}}` for values from `site.config.js`, `<!--@meta …-->` for title/description/OG tags,
+`{{key}}` for values from `site.config.js` (plus `{{projectCount}}`, `{{liveCount}}` and per-category
+counts computed from the project data), `<!--@meta …-->` for title/description/OG tags,
 `<!--@header:page-->` / `<!--@footer-->`, `<!--@projects-->` for the prerendered project grid
 and `<!--@if key-->…<!--@endif-->` for optional parts (e.g. LinkedIn).
 
@@ -41,7 +47,9 @@ Add an entry to `projects.json`. `icon` is one of the names in `site/src/ui/icon
 hold `play`, `live`, `store`, `docs`, `itch`, `download`, `model` and `github`. For a screenshot,
 put it in `site/public/images/projects/` (16:9 WebP) and set `"image": "images/projects/name.webp"`.
 `highlights` (a few bullet points) and `status` (e.g. "Live on Google Play") show on the card.
-Set `"released": true` for projects people can use, play or download today: they get a **Live**
+`/projects/?filter=Unity` opens the list with a category selected. The list shows every featured
+project and the six newest of the others; "Show N more" reveals the rest (the game keeps them all).
+For a CV button on the About page, put the PDF in `site/public/` and set `cv: '/cv.pdf'`. Set `"released": true` for projects people can use, play or download today: they get a **Live**
 badge, appear under the Live filter and are listed first.
 
 ## Deploy (GitHub Pages)

@@ -18,7 +18,9 @@ const focusIsFree = () => {
   return !el || el === document.body || el.tagName === 'CANVAS';
 };
 
-export function createInput(canvas) {
+// `enabled` says whether the game is on screen and running; while it isn't, keys belong to the page
+// (arrows and Space scroll it as usual).
+export function createInput(canvas, { enabled = () => true } = {}) {
   const state = {
     x: null, // pointer position in CSS pixels inside the canvas
     y: null,
@@ -61,7 +63,7 @@ export function createInput(canvas) {
   }
 
   function onKeyDown(e) {
-    if (!focusIsFree() || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (!enabled() || !focusIsFree() || e.ctrlKey || e.metaKey || e.altKey) return;
     const dir = KEYS[e.code];
     if (dir) {
       state[dir] = true;

@@ -45,7 +45,7 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
   const ship = createShip(camera);
   const fx = createEffects(scene);
   const hud = createHud(stage, planets);
-  const input = createInput(canvas);
+  const input = createInput(canvas, { enabled: () => loop.running });
   const raycaster = new THREE.Raycaster();
 
   let w = 1;
@@ -61,6 +61,9 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
   const aim = { x: 0, y: 0, ndc: new THREE.Vector2(), target: new THREE.Vector3() };
   const shotNdc = new THREE.Vector2();
   const pending = []; // destroyed planets waiting for their card
+  const exhaustPos = new THREE.Vector3();
+  const exhaustDir = new THREE.Vector3();
+  let time = 0;
 
   function resize({ draw = true } = {}) {
     const rect = stage.getBoundingClientRect();
@@ -105,7 +108,13 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
     const k = Math.min(1, dt * 4);
     camera.rotation.y += (-aim.ndc.x * 0.025 - camera.rotation.y) * k;
     camera.rotation.x += (aim.ndc.y * 0.018 - camera.rotation.x) * k;
-    camera.position.set((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake, CAM_Z);
+    // A gentle drift, as if the camera were riding along behind the ship.
+    const drift = reducedMotion ? 0 : 1;
+    camera.position.set(
+      (Math.random() - 0.5) * shake + Math.sin(time * 0.37) * 0.12 * drift,
+      (Math.random() - 0.5) * shake + Math.sin(time * 0.53) * 0.08 * drift,
+      CAM_Z,
+    );
     camera.updateMatrixWorld();
   }
 
@@ -158,6 +167,7 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
       dt = realDt * 0.35;
     }
 
+    time += realDt;
     const inp = controls ? input.state : IDLE_INPUT;
     updateAim(realDt, inp);
     updateCamera(realDt);
@@ -178,6 +188,10 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
     const lock = planets.raycast(raycaster);
     locked = lock?.planet ?? null;
     ship.update(realDt, lock ? lock.point : raycaster.ray.at(40, aim.target), aim.ndc.x);
+    if (ship.ready) {
+      ship.exhaust(exhaustPos, exhaustDir);
+      fx.exhaust(exhaustPos, exhaustDir, realDt);
+    }
     hud.update(camera, w, h, locked, aim, spread, !!(inp.active || inp.usingKeys));
     shake = Math.max(0, shake - realDt * 2.2);
 
@@ -195,11 +209,19 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
   const resizeObserver = new ResizeObserver(() => resize());
   const onVisibility = () => (document.hidden ? loop.pause('hidden') : loop.resume('hidden'));
   document.addEventListener('visibilitychange', onVisibility);
+  // Scrolled down to the rest of the page (or the stage hidden): stop drawing and give the keys back.
+  const visibilityObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      input.reset();
+      loop.resume('offscreen');
+    } else loop.pause('offscreen');
+  }, { threshold: 0.2 });
 
   return {
     start() {
       resize({ draw: false });
       resizeObserver.observe(stage);
+      visibilityObserver.observe(stage);
       // Compile the shaders off the main thread where the browser supports it, then start; doing
       // it on the first frame would freeze the page for a moment on slow phones.
       const ready = renderer.compileAsync ? renderer.compileAsync(scene, camera) : Promise.resolve();
@@ -233,6 +255,7 @@ export function createGame({ canvas, stage, projects, discovered, reducedMotion 
     destroy() {
       loop.stop();
       resizeObserver.disconnect();
+      visibilityObserver.disconnect();
       input.dispose();
       hud.dispose();
       renderer.dispose();

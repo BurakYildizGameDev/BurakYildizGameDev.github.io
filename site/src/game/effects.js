@@ -14,6 +14,8 @@ const BOLT_SPEED = 260; // world units per second
 const UP = new THREE.Vector3(0, 1, 0);
 const WHITE = new THREE.Color(0xffffff);
 const HOT = new THREE.Color(1, 0.72, 0.38);
+const EXHAUST_A = new THREE.Color(1, 0.3, 0.6);
+const EXHAUST_B = new THREE.Color(0.3, 0.9, 1);
 const rand = (a, b) => a + Math.random() * (b - a);
 
 function randomUnit(out) {
@@ -163,6 +165,7 @@ export function createEffects(scene) {
   }
 
   const queue = []; // delayed bursts for the finale
+  let exhaustBudget = 0;
 
   return {
     tracer(from, to) {
@@ -222,6 +225,18 @@ export function createEffects(scene) {
         chunk(p, v, r * rand(0.06, 0.22), c, rand(1.1, 2.1));
       }
       pop(center, 900, 1600);
+    },
+
+    /** Engine exhaust: hot particles streaming out behind the ship. */
+    exhaust(pos, dir, dt) {
+      exhaustBudget += dt * 110;
+      const v = new THREE.Vector3();
+      while (exhaustBudget >= 1) {
+        exhaustBudget -= 1;
+        v.copy(dir).multiplyScalar(-rand(4, 8)).add(randomUnit(tmp).multiplyScalar(0.6));
+        tmpC.copy(Math.random() < 0.6 ? EXHAUST_A : EXHAUST_B);
+        spark(pos, v, tmpC, rand(0.18, 0.42));
+      }
     },
 
     /** Fireworks for the finale. */

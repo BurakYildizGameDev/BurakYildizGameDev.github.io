@@ -227,7 +227,7 @@ export function createPlanets(scene, projects, { discovered, camZ, fov }) {
     if (!placed) {
       const count = Math.min(list.length, w < 600 ? ACTIVE_PHONE : ACTIVE);
       const first = [...list.filter((p) => !p.discovered), ...list.filter((p) => p.discovered)].slice(0, count);
-      first.forEach((p, i) => activate(p, 0.25 + i * 0.06));
+      first.forEach((p, i) => activate(p, 0.12 + i * 0.04));
       placed = true;
     } else {
       for (const p of list) {

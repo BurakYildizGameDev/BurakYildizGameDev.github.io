@@ -676,26 +676,6 @@
     "featured": false
   },
   {
-    "id": "build-automator",
-    "title": "Build Automator for Unity",
-    "tagline": "One-click and CI builds for Unity, with settings kept in the project.",
-    "description": "An editor tool in development as a UPM package. Build profiles live in ScriptableObject assets that go into Git instead of EditorPrefs, builds can run headless from a CI server, and uploads to Steam (SteamCMD) and itch.io (butler) are driven from the editor.",
-    "highlights": [
-      "Build settings as versioned ScriptableObject assets",
-      "Headless command-line builds for CI",
-      "SteamCMD and butler upload steps",
-      "UPM package with separate Runtime, Editor, Core and test assemblies"
-    ],
-    "status": "In development",
-    "tech": ["C#", "Unity Editor", "UPM", "CI"],
-    "categories": ["Unity"],
-    "icon": "hammer",
-    "color": "#38bdf8",
-    "year": 2026,
-    "links": {},
-    "featured": false
-  },
-  {
     "id": "drop-and-dine",
     "title": "Drop and Dine",
     "tagline": "An early food-drop game prototype.",

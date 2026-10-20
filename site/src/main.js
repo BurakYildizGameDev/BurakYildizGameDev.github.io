@@ -1,6 +1,9 @@
 // Page start-up for every page: navigation, copy buttons, and on the home page the switch between
 // the game and the list view. The game code is only downloaded when the game view is shown.
 
+// Self-hosted fonts: Inter for text, Space Grotesk for headings.
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
 import './styles.css';
 import { projects } from './data/projects.js';
 import { enhanceList } from './ui/list.js';
@@ -25,6 +28,10 @@ function initNav() {
     nav.classList.toggle('is-open', open);
   };
   toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  // A link to a section of the same page (/#about) doesn't reload it, so close the menu ourselves.
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) {
       setOpen(false);

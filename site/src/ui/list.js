@@ -5,32 +5,49 @@
 import { tileHtml, openCard } from './card.js';
 
 export const FILTERS = ['All', 'Live', 'Unity', 'Game', 'Mobile', 'Web', 'AI'];
+// "Other projects" shows this many cards until the visitor asks for the rest, so the strongest work
+// isn't buried. Without JavaScript every card is shown.
+const OTHERS_SHOWN = 6;
 
 export function listHtml(projects) {
   const featured = projects.filter((p) => p.featured);
-  const others = projects.filter((p) => !p.featured);
-  const group = (key, title, items) => `<section class="tile-group" data-group="${key}" aria-labelledby="group-${key}">
+  // Newest first, so the cards shown before "Show more" are the most recent work.
+  const others = projects.filter((p) => !p.featured).sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+  const group = (key, title, items, more = '') => `<section class="tile-group" data-group="${key}" aria-labelledby="group-${key}">
   <h2 class="group-title" id="group-${key}">${title}</h2>
-  <ul class="tiles" role="list">${items.map(tileHtml).join('\n')}</ul>
+  <ul class="tiles" role="list">${items.map(tileHtml).join('\n')}</ul>${more}
 </section>`;
+  const more = `\n  <button type="button" class="btn btn-ghost tiles-more js-only" aria-expanded="false" hidden>Show more projects</button>`;
   return `<div class="filters" role="group" aria-label="Filter projects by category">
   ${FILTERS.map(
     (f) => `<button type="button" class="filter" data-filter="${f}" aria-pressed="${f === 'All'}">${f}</button>`,
   ).join('\n  ')}
 </div>
 ${group('featured', 'Featured', featured)}
-${group('other', 'Other projects', others)}
+${group('other', 'Other projects', others, more)}
 <p class="tiles-empty" hidden>Nothing in this category yet.</p>`;
 }
 
 export function enhanceList(root, projects, { discovered = new Set() } = {}) {
   const byId = new Map(projects.map((p) => [p.id, p]));
   const tiles = [...root.querySelectorAll('.tile')];
+  const moreBtn = root.querySelector('.tiles-more');
+  let filter = 'All';
+  let expanded = false;
 
-  function applyFilter(filter) {
+  function applyFilter(next = filter) {
+    filter = next;
     root.querySelectorAll('.filter').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
+    let others = 0;
     for (const tile of tiles) {
-      tile.hidden = filter !== 'All' && !tile.dataset.cats.split(' ').includes(filter);
+      const match = filter === 'All' || tile.dataset.cats.split(' ').includes(filter);
+      const extra = match && !expanded && !!tile.closest('[data-group="other"]') && ++others > OTHERS_SHOWN;
+      tile.hidden = !match || extra;
+    }
+    if (moreBtn) {
+      const rest = others - OTHERS_SHOWN;
+      moreBtn.hidden = expanded || rest <= 0;
+      moreBtn.textContent = `Show ${rest} more project${rest === 1 ? '' : 's'}`;
     }
     let any = false;
     root.querySelectorAll('.tile-group').forEach((g) => {
@@ -51,8 +68,17 @@ export function enhanceList(root, projects, { discovered = new Set() } = {}) {
   }
 
   root.addEventListener('click', (e) => {
-    const filter = e.target.closest('.filter');
-    if (filter) return applyFilter(filter.dataset.filter);
+    const filterBtn = e.target.closest('.filter');
+    if (filterBtn) return applyFilter(filterBtn.dataset.filter);
+    if (e.target.closest('.tiles-more')) {
+      // Focus the first card that appears, so keyboard users land where the list grew.
+      const firstNew = tiles.find((t) => t.hidden && t.closest('[data-group="other"]'));
+      expanded = true;
+      moreBtn.setAttribute('aria-expanded', 'true');
+      applyFilter();
+      firstNew?.querySelector('.tile-open').focus();
+      return;
+    }
     const btn = e.target.closest('.tile-open');
     if (btn) open(btn.dataset.id);
   });
@@ -98,6 +124,11 @@ export function enhanceList(root, projects, { discovered = new Set() } = {}) {
   }
 
   refreshDiscovered();
+  applyFilter();
+
+  // /projects/?filter=Unity starts with that category selected.
+  const startFilter = new URLSearchParams(location.search).get('filter');
+  if (FILTERS.includes(startFilter)) applyFilter(startFilter);
 
   // Deep link: /projects/#neon-shorts-engine opens that card.
   const hashId = decodeURIComponent(location.hash.slice(1));

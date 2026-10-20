@@ -14,6 +14,14 @@ export default {
   itch: 'https://burak-yildiz.itch.io',
   huggingface: 'https://huggingface.co/BurakshDev',
   linkedin: '', // e.g. https://www.linkedin.com/in/your-name/ — left empty, the link is hidden
+  // A CV to download (e.g. '/cv.pdf' with the file in site/public/). Left empty, the button is hidden.
+  cv: '',
+
+  education: {
+    degree: 'B.Sc. in Computer Engineering',
+    school: 'Kırşehir Ahi Evran University',
+    graduated: 'October 2026',
+  },
 
   projectDoctor: {
     version: '0.2.0',

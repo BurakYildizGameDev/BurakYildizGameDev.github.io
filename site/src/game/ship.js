@@ -1,5 +1,6 @@
 // The gunship. It rides along with the camera at the bottom of the view, turns to face the
 // crosshair and fires from two cannons in turn, with a muzzle flash, a light pop and recoil.
+// It never sits still: it bobs on its thrust, banks into turns and its engine burns and flickers.
 
 import * as THREE from 'three';
 import { flashTexture, glowTexture } from './textures.js';
@@ -74,6 +75,14 @@ export function createShip(camera) {
   );
   engine.position.set(0, 0, -0.75);
   body.add(engine);
+  const plume = new THREE.Sprite(
+    new THREE.SpriteMaterial({ map: glowTexture(), color: 0x00e5ff, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending, depthWrite: false }),
+  );
+  plume.position.set(0, 0, -1.05);
+  body.add(plume);
+  const nozzle = new THREE.Object3D();
+  nozzle.position.set(0, 0, -0.7);
+  body.add(nozzle);
 
   const light = new THREE.PointLight(0xaef6ff, 0, 10, 2);
   light.position.set(0, 0, 0.6);
@@ -85,6 +94,8 @@ export function createShip(camera) {
   let recoil = 0;
   let next = 0;
   let t = 0;
+  let bank = 0;
+  let prevX = 0;
   const out = new THREE.Vector3();
 
   return {
@@ -104,10 +115,17 @@ export function createShip(camera) {
       enter = Math.min(1, enter + dt * 1.4);
       const e = 1 - Math.pow(1 - enter, 3);
       root.position.x += (aimX * halfW * 0.3 - root.position.x) * Math.min(1, dt * 8);
-      root.position.y = baseY - (1 - e) * 2.5;
+      // Floating on its thrust: a slow bob plus a little engine shudder.
+      root.position.y = baseY - (1 - e) * 2.5 + Math.sin(t * 2.1) * 0.07 + (Math.random() - 0.5) * 0.008;
+      const vx = dt > 0 ? (root.position.x - prevX) / dt : 0;
+      prevX = root.position.x;
+      // Bank into the turn, like an aircraft rolling into it.
+      bank += (Math.max(-0.7, Math.min(0.7, -vx * 0.35)) - bank) * Math.min(1, dt * 6);
 
       body.position.set(0, 0, 0);
       body.lookAt(target);
+      body.rotateZ(bank + Math.sin(t * 1.3) * 0.05);
+      body.rotateX(Math.sin(t * 1.7) * 0.03);
       body.translateZ(-recoil * 0.35);
       recoil = Math.max(0, recoil - dt * 7);
 
@@ -120,7 +138,14 @@ export function createShip(camera) {
         }
       }
       light.intensity = Math.max(0, light.intensity - dt * 160);
-      engine.scale.setScalar(0.55 + Math.sin(t * 40) * 0.05 + Math.random() * 0.08);
+      engine.scale.setScalar(0.6 + Math.sin(t * 40) * 0.06 + Math.random() * 0.1);
+      plume.scale.set(0.45 + Math.random() * 0.1, 0.45 + Math.random() * 0.1, 1);
+      plume.material.opacity = 0.55 + Math.random() * 0.3;
+    },
+    /** Where the exhaust leaves the ship, and which way the ship is pointing. */
+    exhaust(pos, dir) {
+      nozzle.getWorldPosition(pos);
+      body.getWorldDirection(dir);
     },
     /** Fires the next cannon; returns the muzzle's world position for the tracer. */
     fire() {
